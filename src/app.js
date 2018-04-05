@@ -5,19 +5,21 @@ import 'bulma';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-// import Navbar from './components/common/Navbar';
+import Navbar from './components/common/Navbar';
 import Register from './components/auth/Register';
+import IndexRoute from './components/images/IndexRoute';
+
 
 class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
          <main>
-           {/* <Navbar /> */}
+           <Navbar />
            <section>
              <Switch>
-             <Route path="/" component={Register} />
-             <h1>Unstagram</h1>
+               <Route path="/images" component={IndexRoute} />
+               <Route path="/" component={Register} />
            </Switch>
            </section>
          </main>
