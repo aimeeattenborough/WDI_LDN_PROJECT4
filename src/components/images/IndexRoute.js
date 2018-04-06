@@ -22,14 +22,14 @@ class IndexRoute extends React.Component {
         <ul className="columns is-multiline">
           {this.state.posts.map((post, i) =>
             <li key={i} className="column is-one-third">
-              {/* <Link to={`/images/${image._id}`}> */}
+              <Link to={`/images/${post._id}`}>
                 <div className="card">
                   <div className="card-content">
                     <img src={post.image}></img>
                     <h4 className="subtitle">{post.caption}</h4>
                   </div>
                 </div>
-              {/* </Link> */}
+              </Link>
             </li>
           )}
         </ul>
