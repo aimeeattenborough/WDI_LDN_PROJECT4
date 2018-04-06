@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Auth from '../../lib/Auth';
 
+import Filestack from './Filestack';
+
 class NewRoute extends React.Component {
 
   state = {
@@ -34,6 +36,7 @@ class NewRoute extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <Filestack />
         <div className="field">
           <label htmlFor="caption">Caption</label>
           <input

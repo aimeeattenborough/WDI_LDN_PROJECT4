@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import ReactFilestack from 'react-filestack'
 import 'bulma';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
