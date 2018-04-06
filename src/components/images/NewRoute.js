@@ -9,8 +9,7 @@ class NewRoute extends React.Component {
   state = {
     caption: '',
     image: '',
-    errors: {},
-    imageURL: ''
+    errors: {}
   }
 
   handleChange = ({ target: { name, value } }) => {

@@ -10,7 +10,12 @@ class ShowRoute extends React.Component {
 
   componentDidMount() {
     axios.get(`/api/images/${this.props.match.params.id}`)
-    .then(res => this.setState({ post: res.data }, () => console.log(this.state.post)));
+    .then(res => this.setState({ post: res.data }));
+  }
+
+  editPost = () => {
+  axios.get(`/api/images/${this.props.match.params.id}`)
+    .then(() => this.props.history.push(`/images/${this.props.match.params.id}/edit`));
   }
 
 
@@ -20,6 +25,7 @@ class ShowRoute extends React.Component {
         <div className="container">
           <img src={this.state.post.image}></img>
           <h1 className="title">{this.state.post.caption}</h1>
+          <a onClick={this.editPost}>Edit</a>
         </div>
       )
     )

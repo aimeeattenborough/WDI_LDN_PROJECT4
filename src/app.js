@@ -11,6 +11,7 @@ import Register from './components/auth/Register';
 import IndexRoute from './components/images/IndexRoute';
 import ShowRoute from './components/images/ShowRoute';
 import NewRoute from './components/images/NewRoute';
+import EditRoute from './components/images/EditRoute';
 
 
 class App extends React.Component {
@@ -21,6 +22,7 @@ class App extends React.Component {
            <Navbar />
            <section>
              <Switch>
+               <Route path="/images/:id/edit" component={EditRoute} />
                <Route path="/images/new" component={NewRoute} />
                <Route path="/images/:id" component={ShowRoute} />
                <Route path="/images" component={IndexRoute} />
