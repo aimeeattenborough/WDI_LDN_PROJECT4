@@ -8,7 +8,9 @@ class NewRoute extends React.Component {
 
   state = {
     caption: '',
-    errors: {}
+    image: '',
+    errors: {},
+    imageURL: ''
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -21,7 +23,6 @@ class NewRoute extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     axios({
       method: 'POST',
       url: '/api/images',
@@ -32,11 +33,14 @@ class NewRoute extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
+  onSuccess = (result) => {
+    this.setState({ image: result.filesUploaded[0].url }, () => console.log(this.state.image));
+  }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <Filestack />
+        <Filestack onSuccess={this.onSuccess} />
         <div className="field">
           <label htmlFor="caption">Caption</label>
           <input
@@ -47,6 +51,7 @@ class NewRoute extends React.Component {
             onChange={this.handleChange}
           />
         </div>
+        {this.state.image && <img src={this.state.image} />}
       <button className="button is-primary">Submit</button>
       </form>
 

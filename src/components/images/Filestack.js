@@ -4,33 +4,23 @@ import ReactFilestack from 'react-filestack'
 class Filestack extends React.Component {
 
   state = {
-    image: ''
+    api: 'Ah2KpY6HNTrWeqrIKMLcwz'
   }
 
   options = {
     accept: 'image/*',
     maxFiles: 1,
-    // transformations: { crop: { force: true, aspectRatio: 4/4 } },
-    storeTo: {
-      location: 's3',
-    }
-  }
-
-  api = {
-    api: 'Ah2KpY6HNTrWeqrIKMLcwz'
-  }
-
-  onSuccess = (result) => {
-    this.setState({ image: result.filesUploaded.url }, () => console.log(result));
+      transformations: {
+        crop: {aspectRatio: 4 / 4}
+      },
   }
 
   render() {
     return (
       <ReactFilestack
-        apikey={this.api.api}
+        apikey={this.state.api}
         options={this.options}
-        onSuccess={this.onSuccess}
-        // onError={onError}
+        onSuccess={this.props.onSuccess}
         render={({ onPick }) => (
           <div>
             <strong>Upload an image</strong>
