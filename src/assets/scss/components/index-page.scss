@@ -18,19 +18,11 @@
   border: 1px solid #D1CFCE;
 }
 
-.like {
+.icon {
   background-color: white;
   border: none;
   width: 45px;
 }
-.like:focus {
-  outline: none;
-}
-.unlike {
-  background-color: white;
-  border: none;
-  width: 45px;
-}
-.unlike:focus {
+.icon:focus {
   outline: none;
 }

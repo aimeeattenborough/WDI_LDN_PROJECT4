@@ -6,6 +6,8 @@ import _ from 'lodash';
 // link specific to react router dom. We use this so we don't have to use an <a> tag (which would reload the page), to link our banger to the show page.
 import { Link } from 'react-router-dom';
 
+import CommentInput from './CommentInput';
+
 import Sidebar from './sidebarMenu.js'
 import css from '../../assets/scss/components/index-page.scss';
 
@@ -51,8 +53,15 @@ class IndexRoute extends React.Component {
       .then(() => this.setState({ posts: posts }));
   }
 
+  commentButton = (post) => {
+    const index = this.state.posts.indexOf(post);
+    console.log(index);
+    document.getElementById(index).focus();
+  }
+
   render() {
     const user = User.getUser();
+    console.log(user);
     return (
       <main>
       <div className="posts">
@@ -68,18 +77,27 @@ class IndexRoute extends React.Component {
                 <div className="card">
                   <div className="card-content">
                     {user.likes.includes(post._id) ? (
-                    <button className="unlike" onClick={() => this.unlikeImage(post)}><img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/heart-icon.png" /></button>
+                      <button className="icon" onClick={() => this.unlikeImage(post)}>
+                        <img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/heart-icon.png" />
+                      </button>
                   ) : (
-                    <button className="like" onClick={() => this.likeImage(post)}><img src="https://png.icons8.com/metro/1600/like.png" /></button>
+                      <button className="icon" onClick={() => this.likeImage(post)}>
+                        <img src="https://png.icons8.com/metro/1600/like.png" />
+                      </button>
                   )}
-                    <h4 className="subtitle">{post.caption}</h4>
+                      <button className="icon" onClick={() => this.commentButton(post)}>
+                        <img src="http://icons.iconarchive.com/icons/icons8/ios7/512/Very-Basic-Speech-Bubble-icon.png" />
+                      </button>
+
+                      <h4 className="subtitle">{post.caption}</h4>
+                    </div>
                   </div>
-                </div>
-            </li>
-          )}
-        </ul>
-      </div>
-    <Sidebar />
+                  <CommentInput id={i} />
+                </li>
+              )}
+            </ul>
+          </div>
+        <Sidebar />
       </main>
     )
   }

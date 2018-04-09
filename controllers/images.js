@@ -49,7 +49,7 @@ function commentsCreateRoute(req, res, next) {
       image.comments.push(req.body);
       return image.save();
     })
-    .then(image => res.redirect(`/images/${image._id}`))
+    .then(image => res.json(image))
     .catch(next);
 }
 
@@ -60,7 +60,7 @@ function commentsDeleteRoute(req, res, next) {
       comment.remove();
       return image.save();
     })
-    .then(image => res.redirect(`/images/${image._id}`))
+    .then(image => res.json(image))
     .catch(next);
 }
 
@@ -78,7 +78,6 @@ function likesCreateRoute(req, res, next) {
 function likesDeleteRoute(req, res, next) {
   req.currentUser.likes = req.currentUser.likes.filter(image => !image.equals(req.params.id));
   // filter returns new array so saving it as likes.
-
   req.currentUser.save()
     .then(user => res.json(user))
     .catch(next);
