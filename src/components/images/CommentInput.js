@@ -1,15 +1,23 @@
 import React from 'react';
 
-const CommentInput = ({ id }) => {
+const CommentInput = ({ ref, id, handleChangeComment, handleSubmitComment, data }) => {
   return (
-    <div className="card">
-      <div className="card-content">
-        <form>
-          <input className="comment-input-field" id={id} type="text"></input>
-        </form>
+    <div>
+      <div className="card">
+        <div className="card-content">
+          <form onSubmit={(e) => handleSubmitComment(e, id)}>
+            <input className="comment-input-field"
+              id={id}
+              ref={ref}
+              type="text"
+              name="comments"
+              onChange={(e) => handleChangeComment(e, id)}>
+              </input>
+          </form>
+        </div>
       </div>
-    </div>
+  </div>
   )
 }
 
-export default CommentInput
+export default CommentInput;

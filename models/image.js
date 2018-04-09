@@ -18,12 +18,6 @@ commentSchema.methods.isOwnedBy = function(user) {
   return this.user && user._id.equals(this.user._id);
 };
 
-// const likeSchema = new mongoose.Schema({
-//   user: { type: mongoose.Schema.ObjectId, ref: 'User'}
-// });
-// const dislikeSchema = new mongoose.Schema({
-//   user: { type: mongoose.Schema.ObjectId, ref: 'User'}
-// });
 
 const schema = new mongoose.Schema({
   image: { type: String, required: true },

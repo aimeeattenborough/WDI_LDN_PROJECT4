@@ -15,8 +15,10 @@ import css from '../../assets/scss/components/index-page.scss';
 class IndexRoute extends React.Component {
 
   state = {
-    posts: []
-
+    posts: [],
+    newPosts: [],
+    errors: {},
+    newComment: ''
   };
 
   componentDidMount() {
@@ -34,7 +36,6 @@ class IndexRoute extends React.Component {
     axios.post(`/api/images/${this.state.posts[index]._id}/likes`, null, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-    // .then(() => console.log('user after like', user))
       .then(res => {
         User.setUser(res.data)
         this.setState({ posts: posts })
@@ -59,9 +60,34 @@ class IndexRoute extends React.Component {
     document.getElementById(index).focus();
   }
 
+  handleChangeComment = (e, id) => {
+    this.setState({ newComment: e.target.value}, () => console.log(this.state));
+  }
+
+
+  handleSubmitComment = (e, id) => {
+    e.preventDefault();
+    const user = User.getUser();
+    const editedPosts = this.state.posts.slice();
+    editedPosts[id].comments.push({
+      createdAt: new Date(),
+      content: this.state.newComment,
+      user: user
+    })
+    this.setState({ posts: editedPosts, newComment: ''}, () => console.log('data', this.state));
+
+    axios({
+      method: 'POST',
+      url: `/api/images/${this.state.posts[id]._id}/comments`,
+      headers: { Authorization: `Bearer ${Auth.getToken()}`},
+      data: this.state
+    })
+      .then(() => this.props.history.push('/images'))
+  }
+
+
   render() {
     const user = User.getUser();
-    console.log(user);
     return (
       <main>
       <div className="posts">
@@ -80,11 +106,11 @@ class IndexRoute extends React.Component {
                       <button className="icon" onClick={() => this.unlikeImage(post)}>
                         <img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/heart-icon.png" />
                       </button>
-                  ) : (
+                    ) : (
                       <button className="icon" onClick={() => this.likeImage(post)}>
                         <img src="https://png.icons8.com/metro/1600/like.png" />
                       </button>
-                  )}
+                    )}
                       <button className="icon" onClick={() => this.commentButton(post)}>
                         <img src="http://icons.iconarchive.com/icons/icons8/ios7/512/Very-Basic-Speech-Bubble-icon.png" />
                       </button>
@@ -92,7 +118,12 @@ class IndexRoute extends React.Component {
                       <h4 className="subtitle">{post.caption}</h4>
                     </div>
                   </div>
-                  <CommentInput id={i} />
+                  <CommentInput
+                    id={i}
+                    handleChangeComment={this.handleChangeComment}
+                    handleSubmitComment={this.handleSubmitComment}
+                    data={this.state}
+                   />
                 </li>
               )}
             </ul>

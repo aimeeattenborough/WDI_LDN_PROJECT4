@@ -14,7 +14,7 @@ class Navbar extends React.Component {
 
   handleLogout = () => {
     Auth.logout();
-    this.props.history.push('/bangers');
+    this.props.history.push('/images');
   }
 
   handleToggle = () => {

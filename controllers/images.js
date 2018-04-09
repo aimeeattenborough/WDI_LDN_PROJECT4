@@ -6,7 +6,6 @@ function indexRoute(req, res, next) {
   Image
     .find()
     .then(images => {
-      console.log(images);
       res.json(images);
     })
     .catch(next);
@@ -42,8 +41,8 @@ function deleteRoute(req, res, next) {
 // COMMENTS
 
 function commentsCreateRoute(req, res, next) {
-  req.body.user = req.currentUser;
-
+  // req.body.user = req.currentUser;
+  console.log(req.params.id);
   Image.findById(req.params.id) //gets the image
     .then(image => {
       image.comments.push(req.body);
