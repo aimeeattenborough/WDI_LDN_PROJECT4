@@ -29,9 +29,7 @@ const schema = new mongoose.Schema({
   image: { type: String, required: true },
   caption: { type: String, maxlength: 380 },
   user: { type: mongoose.Schema.ObjectId, ref: 'User' },
-  comments: [ commentSchema ],
-  likes: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
-  // dislikes: [ dislikeSchema ]
+  comments: [ commentSchema ]
 });
 
 module.exports = mongoose.model('Image', schema);

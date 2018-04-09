@@ -3,6 +3,8 @@ import axios from 'axios';
 import Auth from '../../lib/Auth';
 
 import Filestack from './Filestack';
+import css from '../../assets/scss/components/new-page.scss';
+
 
 class NewRoute extends React.Component {
 
@@ -38,7 +40,7 @@ class NewRoute extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="upload-form" onSubmit={this.handleSubmit}>
         <Filestack onSuccess={this.onSuccess} />
         <div className="field">
           <label htmlFor="caption">Caption</label>

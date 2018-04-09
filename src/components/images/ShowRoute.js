@@ -2,6 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import Auth from '../../lib/Auth';
 
+import css from '../../assets/scss/components/show-page.scss';
+
+
 class ShowRoute extends React.Component {
 
   state = {
@@ -23,8 +26,10 @@ class ShowRoute extends React.Component {
       return (
         this.state.post && (
         <div className="container">
-          <img src={this.state.post.image}></img>
-          <h1 className="title">{this.state.post.caption}</h1>
+          <div className="card">
+            <img src={this.state.post.image}></img>
+            <h1 className="title">{this.state.post.caption}</h1>
+          </div>
           <a onClick={this.editPost}>Edit</a>
         </div>
       )

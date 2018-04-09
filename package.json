@@ -50,6 +50,7 @@
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-filestack": "^0.9.7",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "react-sidebar": "^2.3.2"
   }
 }

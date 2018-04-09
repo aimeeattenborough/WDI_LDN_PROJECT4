@@ -2,6 +2,9 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom'; // with router allows us to pass in the props
 import Auth from '../../lib/Auth';
 
+import css from '../../assets/scss/components/navbar.scss';
+
+
 class Navbar extends React.Component {
 
 // we've created a property called state
@@ -25,7 +28,7 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar">
+      <nav className="navbar is-transparent">
         <div className="navbar-brand">
           <Link className="navbar-item" to="/images">
           Unstagram
@@ -43,12 +46,13 @@ class Navbar extends React.Component {
           className={`navbar-menu ${this.state.navIsOpen ? 'is-active' : ''}`}>
           <div className="navbar-end">
             <Link className="navbar-item" to="/images">All Posts</Link>
+            <Link className="navbar-item" to="/users/:id">User Profile</Link>
 
             {Auth.isAuthenticated() && <Link className="navbar-item" to="/images/new">New Post</Link>}
             {Auth.isAuthenticated() && <Link className="navbar-item" to="/images/new">Favourites</Link>}
             {Auth.isAuthenticated() && <a className="navbar-item" onClick={this.handleLogout}>Logout</a>}
-            {!Auth.isAuthenticated() && <Link className="navbar-item" to="/">Login</Link>}
-            {!Auth.isAuthenticated() && <Link className="navbar-item" to="/">Register</Link>}
+            {!Auth.isAuthenticated() && <Link className="navbar-item" to="/login">Login</Link>}
+            {!Auth.isAuthenticated() && <Link className="navbar-item" to="/register">Register</Link>}
           </div>
         </div>
       </nav>

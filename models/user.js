@@ -7,7 +7,7 @@ const schema = new mongoose.Schema({
   password: { type: String, required: true },
   profilePicture: { type: String },
   isUnfluencer: { type: Boolean, default: false },
-  likes: [{type: mongoose.Schema.ObjectId, ref: 'Image'}],
+  likes: [{ type: mongoose.Schema.ObjectId, ref: 'Image' }],
   // following: [{ type: mongoose.Schema.ObjectId, ref: 'User'}],
   images: [{type: mongoose.Schema.ObjectId, ref: 'Image'}]
 });

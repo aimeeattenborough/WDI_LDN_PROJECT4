@@ -67,21 +67,23 @@ function commentsDeleteRoute(req, res, next) {
 // LIKES
 
 function likesCreateRoute(req, res, next) {
+  if(req.currentUser.likes.find(image => image.equals(req.params.id))) return false;
+  // checking whether the current likes array contains the same image id - if so cannot add again. image is a string, req.params an obj so using equals
   req.currentUser.likes.push(req.params.id);
   req.currentUser.save()
-    .then(() => res.redirect(`/images/${req.params.id}`))
+    .then(user => res.json(user))
     .catch(next);
 }
-// 'save new filtered array as locals.currentUser.likes' = likes;
 
 function likesDeleteRoute(req, res, next) {
-  req.currentUser.likes = req.currentUser.likes.filter(image => {
-    return !image._id.equals(req.params.id);
-  });
+  req.currentUser.likes = req.currentUser.likes.filter(image => !image.equals(req.params.id));
+  // filter returns new array so saving it as likes.
+
   req.currentUser.save()
-    .then(() => res.redirect(`/images/${req.params.id}`))
+    .then(user => res.json(user))
     .catch(next);
 }
+
 
 
 module.exports = {
