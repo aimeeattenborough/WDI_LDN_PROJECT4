@@ -4,6 +4,7 @@ const images = require('../controllers/images');
 const users = require('../controllers/users');
 const auth = require('../controllers/auth');
 
+
 // REGISTRATION AND LOGIN requests - uses auth controller to register and find the user in the database
 router.route('/register')
   .post(auth.register);
@@ -37,6 +38,7 @@ router.route('/images/:id/likes')
 // PROFILES
 router.route('/users/:id')
   .get(users.show); //sR?
+
 
 
 // To add - Show route for users, dislikes, follows/following

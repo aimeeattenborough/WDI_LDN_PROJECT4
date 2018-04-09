@@ -55,7 +55,6 @@ class NewRoute extends React.Component {
         {this.state.image && <img src={this.state.image} />}
       <button className="button is-primary">Submit</button>
       </form>
-
     )
   }
 }

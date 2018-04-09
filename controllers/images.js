@@ -41,8 +41,6 @@ function deleteRoute(req, res, next) {
 // COMMENTS
 
 function commentsCreateRoute(req, res, next) {
-  // req.body.user = req.currentUser;
-  console.log(req.params.id);
   Image.findById(req.params.id) //gets the image
     .then(image => {
       image.comments.push(req.body);

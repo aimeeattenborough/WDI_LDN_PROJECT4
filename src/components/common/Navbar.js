@@ -45,12 +45,13 @@ class Navbar extends React.Component {
         <div
           className={`navbar-menu ${this.state.navIsOpen ? 'is-active' : ''}`}>
           <div className="navbar-end">
-            <Link className="navbar-item" to="/images">All Posts</Link>
-            <Link className="navbar-item" to="/users/:id">User Profile</Link>
+            <Link className="navbar-item" to="/images"><i class="fas fa-camera-retro"></i></Link>
+            <Link className="navbar-item" to="/users/:id"><i class="fas fa-child"></i></Link>
+            <Link className="navbar-item" to="/tv"><i class="fas fa-tv"></i></Link>
 
-            {Auth.isAuthenticated() && <Link className="navbar-item" to="/images/new">New Post</Link>}
-            {Auth.isAuthenticated() && <Link className="navbar-item" to="/images/new">Favourites</Link>}
-            {Auth.isAuthenticated() && <a className="navbar-item" onClick={this.handleLogout}>Logout</a>}
+            {Auth.isAuthenticated() && <Link className="navbar-item" to="/images/new"><i class="fas fa-plus"></i></Link>}
+            {Auth.isAuthenticated() && <Link className="navbar-item" to="/images/liked"><i class="far fa-heart"></i></Link>}
+            {Auth.isAuthenticated() && <a className="navbar-item" onClick={this.handleLogout}><i class="fas fa-sign-out-alt"></i></a>}
             {!Auth.isAuthenticated() && <Link className="navbar-item" to="/login">Login</Link>}
             {!Auth.isAuthenticated() && <Link className="navbar-item" to="/register">Register</Link>}
           </div>

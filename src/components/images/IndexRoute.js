@@ -22,7 +22,7 @@ class IndexRoute extends React.Component {
 
   componentDidMount() {
     axios.get('/api/images')
-    .then(res => this.setState({ posts: res.data }, () => console.log(this.state)));
+    .then(res => this.setState({ posts: res.data }));
   }
 
   likeImage = (post) => {
@@ -37,7 +37,7 @@ class IndexRoute extends React.Component {
     })
       .then(res => {
         User.setUser(res.data)
-        this.setState({ posts: posts })
+        this.setState({ posts: posts }, () => console.log('user like',user));
       });
   }
 
@@ -81,7 +81,7 @@ class IndexRoute extends React.Component {
           res.data,
           ...this.state.posts.slice(index+1)
         ];
-        this.setState({ posts, newComment: '', currentlyEditing: null });
+        this.setState({ posts, newComment: '', currentlyEditing: null }, () => console.log('posts', posts));
         // set posts to be the new posts, empty new comment and nullify currently editing so the input box disappears
       })
   }
