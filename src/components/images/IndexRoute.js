@@ -16,7 +16,6 @@ class IndexRoute extends React.Component {
 
   state = {
     posts: [],
-    newPosts: [],
     errors: {},
     newComment: ''
   };
@@ -46,6 +45,7 @@ class IndexRoute extends React.Component {
     const user = User.getUser();
     const index = this.state.posts.indexOf(post);
     const posts = this.state.posts.slice();
+    // making copy of array
     posts[index].like = !posts[index].like;
     axios.delete(`/api/images/${this.state.posts[index]._id}/likes`, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
@@ -74,12 +74,15 @@ class IndexRoute extends React.Component {
     })
       .then(res => {
         const index = this.state.posts.findIndex(post => post._id === res.data._id);
+        // find the post that we have added a comment to. The post with the same id as the one sent back as a response.
         const posts = [
+          // make a post sandwich, takes the beginning and end of posts and adds the updated post with the comment/
           ...this.state.posts.slice(0, index),
           res.data,
           ...this.state.posts.slice(index+1)
         ];
         this.setState({ posts, newComment: '', currentlyEditing: null });
+        // set posts to be the new posts, empty new comment and nullify currently editing so the input box disappears
       })
   }
 

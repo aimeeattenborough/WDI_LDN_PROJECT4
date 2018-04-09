@@ -5,10 +5,10 @@ const CommentInput = ({ ref, post, handleChangeComment, handleSubmitComment, dat
     <div>
       <div className="card">
         {post.comments.map(comment =>
-          // <h4>{comment._id}</h4>
           <h4 key={comment._id}>{comment.content}</h4>
         )}
         {data.currentlyEditing && data.currentlyEditing === post && <div className="card-content">
+          {/* if currently editing, and the post currently being edited is the same as the current post then show input field to add comment */}
           <form onSubmit={(e) => handleSubmitComment(e, post)}>
             <input className="comment-input-field"
               type="text"
