@@ -1,20 +1,24 @@
 import React from 'react';
 
-const CommentInput = ({ ref, id, handleChangeComment, handleSubmitComment, data }) => {
+const CommentInput = ({ ref, post, handleChangeComment, handleSubmitComment, data }) => {
   return (
     <div>
       <div className="card">
-        <div className="card-content">
-          <form onSubmit={(e) => handleSubmitComment(e, id)}>
+        {post.comments.map(comment =>
+          // <h4>{comment._id}</h4>
+          <h4 key={comment._id}>{comment.content}</h4>
+        )}
+        {data.currentlyEditing && data.currentlyEditing === post && <div className="card-content">
+          <form onSubmit={(e) => handleSubmitComment(e, post)}>
             <input className="comment-input-field"
-              id={id}
-              ref={ref}
               type="text"
               name="comments"
-              onChange={(e) => handleChangeComment(e, id)}>
-              </input>
+              onChange={handleChangeComment}
+              value={data.newComment}
+              autoFocus
+            />
           </form>
-        </div>
+        </div>}
       </div>
   </div>
   )

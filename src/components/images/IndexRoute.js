@@ -54,46 +54,45 @@ class IndexRoute extends React.Component {
       .then(() => this.setState({ posts: posts }));
   }
 
-  commentButton = (post) => {
-    const index = this.state.posts.indexOf(post);
-    console.log(index);
-    document.getElementById(index).focus();
+  handleChangeComment = (e) => {
+    this.setState({ newComment: e.target.value }, () => console.log(this.state));
   }
 
-  handleChangeComment = (e, id) => {
-    this.setState({ newComment: e.target.value}, () => console.log(this.state));
+  toggleEditing = (post) => {
+    this.state.currentlyEditing === post ? this.setState({ currentlyEditing: null }) : this.setState({ currentlyEditing: post });
   }
 
 
-  handleSubmitComment = (e, id) => {
+  handleSubmitComment = (e, post) => {
     e.preventDefault();
-    const user = User.getUser();
-    const editedPosts = this.state.posts.slice();
-    editedPosts[id].comments.push({
-      createdAt: new Date(),
-      content: this.state.newComment,
-      user: user
-    })
-    this.setState({ posts: editedPosts, newComment: ''}, () => console.log('data', this.state));
 
     axios({
       method: 'POST',
-      url: `/api/images/${this.state.posts[id]._id}/comments`,
+      url: `/api/images/${post._id}/comments`,
       headers: { Authorization: `Bearer ${Auth.getToken()}`},
-      data: this.state
+      data: { content: this.state.newComment }
     })
-      .then(() => this.props.history.push('/images'))
+      .then(res => {
+        const index = this.state.posts.findIndex(post => post._id === res.data._id);
+        const posts = [
+          ...this.state.posts.slice(0, index),
+          res.data,
+          ...this.state.posts.slice(index+1)
+        ];
+        this.setState({ posts, newComment: '', currentlyEditing: null });
+      })
   }
 
 
   render() {
     const user = User.getUser();
+    console.log(this.state.posts);
     return (
       <main>
       <div className="posts">
         <ul className="columns is-multiline">
-          {this.state.posts.map((post, i) =>
-            <li key={i} className="column">
+          {this.state.posts.map(post =>
+            <li key={post._id} className="column">
               <Link to={`/images/${post._id}`}>
               <div className="card post-image">
                 <div className="card-image" style={{backgroundImage: `url(${post.image})`}}>
@@ -111,7 +110,7 @@ class IndexRoute extends React.Component {
                         <img src="https://png.icons8.com/metro/1600/like.png" />
                       </button>
                     )}
-                      <button className="icon" onClick={() => this.commentButton(post)}>
+                      <button className="icon" onClick={() => this.toggleEditing(post)}>
                         <img src="http://icons.iconarchive.com/icons/icons8/ios7/512/Very-Basic-Speech-Bubble-icon.png" />
                       </button>
 
@@ -119,7 +118,7 @@ class IndexRoute extends React.Component {
                     </div>
                   </div>
                   <CommentInput
-                    id={i}
+                    post={post}
                     handleChangeComment={this.handleChangeComment}
                     handleSubmitComment={this.handleSubmitComment}
                     data={this.state}
