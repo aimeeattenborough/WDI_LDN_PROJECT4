@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Auth from '../../lib/Auth';
 import User from '../../lib/User';
+import Filestack from '../images/Filestack';
 
 import css from '../../assets/scss/components/registration-form.scss';
 
@@ -26,6 +27,12 @@ class Register extends React.Component {
       User.setUser(res.data.user);
     })
     .then(() => this.props.history.push('/images'));
+}
+  onSuccess = (result) => {
+    console.log('result', result);
+    const results = Object.assign({}, this.state, { profilePicture: result.filesUploaded[0].url});
+    console.log('results', results);
+    this.setState({ profilePicture: results.profilePicture }, () => console.log(this.state));
 }
 
   loginPageRedirect = () => {
@@ -74,6 +81,7 @@ class Register extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
+            <Filestack onSuccess={this.onSuccess} />
 
             <button className="button is-primary">Submit</button>
             <p>Already have an account?<a onClick={this.loginPageRedirect}> Login here</a> </p>

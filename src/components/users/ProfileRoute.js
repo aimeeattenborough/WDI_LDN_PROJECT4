@@ -2,17 +2,21 @@ import React from 'react';
 import axios from 'axios';
 import Auth from '../../lib/Auth';
 import User from '../../lib/User';
+import { Link } from 'react-router-dom';
 
 
 class ProfileRoute extends React.Component {
 
   state = {
-    user: ''
+    user: '',
+    currentUser: ''
   }
 
   componentDidMount() {
+    const user = User.getUser();
     axios.get(`/api/users/${this.props.match.params.id}`)
-      .then(res => this.setState({ user: res.data }));
+      .then(res => this.setState({ user: res.data }, () => console.log('user', this.state.user)))
+      .then(this.setState({ currentUser: user }, () => console.log('current user', this.state.currentUser)));
   }
 
   isCurrentUser = () => {
@@ -21,30 +25,67 @@ class ProfileRoute extends React.Component {
   }
 
   followUser = () => {
+    console.log('follow...');
     // get the current user
     const user = User.getUser();
     // push user to follow's ID into the current user's following array
+    if(user.following.includes(this.state.user._id)) return false;
     user.following.push(this.state.user._id);
     // make a put request to /api/users/:id with the current user data
     axios.put(`/api/users/${user._id}`, user)
       .then(res => User.setUser(res.data));
+
     // set the user with User.setUser again
 
     // change the button to unfollow...
   }
 
+  unfollowUser = () => {
+    // get the current user
+    const user = User.getUser();
+    // remove the user to unfollow's ID from the current user's following array
+    user.following = user.following.filter(userId => userId !== this.state.user._id);
+    // make a put request to /api/users/:id with the current user data
+    axios.put(`/api/users/${user._id}`, user)
+      .then(res => User.setUser(res.data));
+  }
+
+  viewProfile = (id) => {
+    axios.get(`/api/users/${id}`)
+      .then(res => this.setState({ user: res.data }))
+      .then(() => this.props.history.push(`/users/${id}`));
+  }
+
+
   render() {
     return (
       <div className="container">
+
+        {this.state.currentUser && this.state.user && this.state.currentUser.following.includes(this.state.user._id) ? (
+
+        !this.isCurrentUser() && <button onClick={this.unfollowUser}>Unfollow</button>
+      ) : (
+        !this.isCurrentUser() && <button onClick={this.followUser}>Follow</button>
+      )}
+
         <h1>{this.state.user.username}</h1>
 
-        {!this.isCurrentUser() && <button onClick={this.followUser}>Follow</button>}
-
         <h1>Following:</h1>
-        
-      </div>
-    );
+        {this.state.user && this.state.user.following.map((following, i) =>
+          <li key={i} className="column">
+            <Link to={`/users/${following._id}`}>
+              <div className="card" onClick={() => this.viewProfile(following._id)}>
+                <div className="card-content">
+                  <img src={following.profilePicture} />
+                  <h4 className="subtitle">{following.username}</h4>
+                </div>
+              </div>
+            </Link>
+          </li>
+        )}
+        </div>
+      );
+    }
   }
-}
 
 export default ProfileRoute;
