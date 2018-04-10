@@ -37,7 +37,7 @@ class IndexRoute extends React.Component {
     })
       .then(res => {
         User.setUser(res.data)
-        this.setState({ posts: posts }, () => console.log('user like',user));
+        this.setState({ posts: posts });
       });
   }
 
@@ -89,7 +89,8 @@ class IndexRoute extends React.Component {
 
   render() {
     const user = User.getUser();
-    console.log(this.state.posts);
+    console.log('user', user);
+    console.log('this/stateposts', this.state.posts);
     return (
       <main>
       <div className="posts">

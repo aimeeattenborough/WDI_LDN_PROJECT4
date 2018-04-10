@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import Auth from '../../lib/Auth';
+import User from '../../lib/User';
+
 
 import Filestack from './Filestack';
 import css from '../../assets/scss/components/new-page.scss';
@@ -11,19 +13,22 @@ class NewRoute extends React.Component {
   state = {
     caption: '',
     image: '',
+    user: '',
     errors: {}
   }
 
   handleChange = ({ target: { name, value } }) => {
+    const user = User.getUser();
     // destructuring e.target.name
   const errors = Object.assign({}, this.state.errors, { [name]: '' });
   // clearing the errors
-  this.setState({ [name]: value, errors }, () => console.log(this.state));
+  this.setState({ [name]: value, errors, user: user }, () => console.log('this.state in handelchange', this.state));
   // name in [] makes it a variable. Otherwise it would look for 'name' in state.
 }
 
   handleSubmit = (e) => {
     e.preventDefault();
+
     axios({
       method: 'POST',
       url: '/api/images',

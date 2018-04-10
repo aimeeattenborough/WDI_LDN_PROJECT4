@@ -36,8 +36,12 @@ router.route('/images/:id/likes')
 
 
 // PROFILES
+router.route('/users')
+  .get(users.index);
+
 router.route('/users/:id')
-  .get(users.show); //sR?
+  .get(users.show)
+  .put(users.update); //sR?
 
 
 

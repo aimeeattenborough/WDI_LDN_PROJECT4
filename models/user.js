@@ -8,16 +8,16 @@ const schema = new mongoose.Schema({
   profilePicture: { type: String },
   isUnfluencer: { type: Boolean, default: false },
   likes: [{ type: mongoose.Schema.ObjectId, ref: 'Image' }],
-  // following: [{ type: mongoose.Schema.ObjectId, ref: 'User'}],
-  images: [{type: mongoose.Schema.ObjectId, ref: 'Image'}]
+  following: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  images: [{type: mongoose.Schema.ObjectId, ref: 'Image' }]
 });
 
-// schema
-//   .virtual('followers', {
-//   localField: '_id',
-//   remoteField: 'following',
-//   ref: 'User'
-// });
+schema
+  .virtual('followers', {
+    localField: '_id',
+    foreignField: 'following',
+    ref: 'User'
+  });
 
 // set up the passwordConfirmation virtual
 schema
@@ -61,6 +61,8 @@ schema.methods.hasLiked = function hasLiked(image) {
     return like.equals(image._id);
   });
 };
+
+schema.set('toJSON', { virtuals: true })
 
 
 module.exports = mongoose.model('User', schema);

@@ -5,6 +5,7 @@ const Image = require('../models/image');
 function indexRoute(req, res, next) {
   Image
     .find()
+    .populate('user')
     .then(images => {
       res.json(images);
     })
@@ -64,9 +65,12 @@ function commentsDeleteRoute(req, res, next) {
 // LIKES
 
 function likesCreateRoute(req, res, next) {
+  console.log('hitting route');
   if(req.currentUser.likes.find(image => image.equals(req.params.id))) return false;
   // checking whether the current likes array contains the same image id - if so cannot add again. image is a string, req.params an obj so using equals
+  console.log('adding like');
   req.currentUser.likes.push(req.params.id);
+  console.log(req.currentUser);
   req.currentUser.save()
     .then(user => res.json(user))
     .catch(next);
