@@ -17,12 +17,14 @@ class IndexRoute extends React.Component {
   state = {
     posts: [],
     errors: {},
-    newComment: ''
+    newComment: '',
+    currentUser: ''
   };
 
   componentDidMount() {
+    const currentUser = User.getUser();
     axios.get('/api/images')
-    .then(res => this.setState({ posts: res.data }));
+      .then(res => this.setState({ posts: res.data, currentUser: currentUser }));
   }
 
   likeImage = (post) => {
@@ -36,7 +38,7 @@ class IndexRoute extends React.Component {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => {
-        User.setUser(res.data)
+        User.setUser(res.data);
         this.setState({ posts: posts });
       });
   }
@@ -83,7 +85,7 @@ class IndexRoute extends React.Component {
         ];
         this.setState({ posts, newComment: '', currentlyEditing: null }, () => console.log('posts', posts));
         // set posts to be the new posts, empty new comment and nullify currently editing so the input box disappears
-      })
+      });
   }
 
 
@@ -92,21 +94,21 @@ class IndexRoute extends React.Component {
     console.log('user', user);
     console.log('this/stateposts', this.state.posts);
     return (
-      <main>
-      <div className="posts">
-        <ul className="columns is-multiline">
-          {this.state.posts.map(post =>
-            <li key={post._id} className="column">
-              <Link to={`/images/${post._id}`}>
-              <div className="card post-image">
-                <div className="card-image" style={{backgroundImage: `url(${post.image})`}}>
-                </div>
-              </div>
-              </Link>
+      <main className="columns">
+        <div className="posts column is-three-quarters-desktop">
+          <ul className="columns is-multiline">
+            {this.state.posts.map(post =>
+              <li key={post._id} className="column">
+                <Link to={`/images/${post._id}`}>
+                  <div className="card post-image">
+                    <div className="card-image" style={{backgroundImage: `url(${post.image})`}}>
+                    </div>
+                  </div>
+                </Link>
                 <div className="card">
                   <div className="card-content">
                     {user.likes.includes(post._id) ? (
-                      <button className="icon" onClick={() => this.unlikeImage(post)}>
+                      <button value="button" className="icon" onClick={() => this.unlikeImage(post)}>
                         <img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/heart-icon.png" />
                       </button>
                     ) : (
@@ -114,26 +116,28 @@ class IndexRoute extends React.Component {
                         <img src="https://png.icons8.com/metro/1600/like.png" />
                       </button>
                     )}
-                      <button className="icon" onClick={() => this.toggleEditing(post)}>
-                        <img src="http://icons.iconarchive.com/icons/icons8/ios7/512/Very-Basic-Speech-Bubble-icon.png" />
-                      </button>
+                    <button className="icon" onClick={() => this.toggleEditing(post)}>
+                      <img src="http://icons.iconarchive.com/icons/icons8/ios7/512/Very-Basic-Speech-Bubble-icon.png" />
+                    </button>
 
-                      <h4 className="subtitle">{post.caption}</h4>
-                    </div>
+                    <h4 className="subtitle">{post.caption}</h4>
                   </div>
-                  <CommentInput
-                    post={post}
-                    handleChangeComment={this.handleChangeComment}
-                    handleSubmitComment={this.handleSubmitComment}
-                    data={this.state}
-                   />
-                </li>
-              )}
-            </ul>
-          </div>
+                </div>
+                <CommentInput
+                  currentUser={this.state.currentUser}
+                  post={post}
+                  handleChangeComment={this.handleChangeComment}
+                  handleSubmitComment={this.handleSubmitComment}
+                  data={this.state}
+                />
+              </li>
+            )}
+          </ul>
+        </div>
         <Sidebar />
+
       </main>
-    )
+    );
   }
 }
 

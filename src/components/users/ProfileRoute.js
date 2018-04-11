@@ -16,7 +16,7 @@ class ProfileRoute extends React.Component {
     const user = User.getUser();
     axios.get(`/api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ user: res.data }, () => console.log('user', this.state.user)))
-      .then(this.setState({ currentUser: user }, () => console.log('current user', this.state.currentUser)));
+      .then(() => this.setState({ currentUser: user }, () => console.log('current user', this.state.currentUser)));
   }
 
   isCurrentUser = () => {
@@ -33,7 +33,8 @@ class ProfileRoute extends React.Component {
     user.following.push(this.state.user._id);
     // make a put request to /api/users/:id with the current user data
     axios.put(`/api/users/${user._id}`, user)
-      .then(res => User.setUser(res.data));
+      .then(res => User.setUser(res.data))
+      .then(() => this.setState({ currentUser: User.getUser() }));
 
     // set the user with User.setUser again
 
@@ -47,7 +48,8 @@ class ProfileRoute extends React.Component {
     user.following = user.following.filter(userId => userId !== this.state.user._id);
     // make a put request to /api/users/:id with the current user data
     axios.put(`/api/users/${user._id}`, user)
-      .then(res => User.setUser(res.data));
+      .then(res => User.setUser(res.data))
+      .then(() => this.setState({ currentUser: User.getUser() }));
   }
 
   viewProfile = (id) => {
@@ -60,13 +62,14 @@ class ProfileRoute extends React.Component {
   render() {
     return (
       <div className="container">
-
-        {this.state.currentUser && this.state.user && this.state.currentUser.following.includes(this.state.user._id) ? (
-
-        !this.isCurrentUser() && <button onClick={this.unfollowUser}>Unfollow</button>
-      ) : (
-        !this.isCurrentUser() && <button onClick={this.followUser}>Follow</button>
-      )}
+        {!this.isCurrentUser() && <div>
+          {this.state.currentUser && this.state.user && this.state.currentUser.following.includes(this.state.user._id) ? (
+            // if it's not the current user, and there is a current user, and user, and their following includes the same user, then display unfollow
+            <button onClick={this.unfollowUser}>Unfollow</button>
+          ) : (
+            <button onClick={this.followUser}>Follow</button>
+          )}
+        </div>}
 
         <h1>{this.state.user.username}</h1>
 
@@ -83,9 +86,13 @@ class ProfileRoute extends React.Component {
             </Link>
           </li>
         )}
-        </div>
-      );
-    }
+        <h1>Likes:</h1>
+        {this.state.user && this.state.user.likes.map((like, i) =>
+          <img className="liked" key={i} src={like.image} />
+        )}
+      </div>
+    );
   }
+}
 
 export default ProfileRoute;

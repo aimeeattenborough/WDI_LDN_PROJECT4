@@ -15,7 +15,7 @@ router.route('/login')
 // IMAGES
 router.route('/images')
   .get(images.index)
-  .post(images.create); //sr
+  .post(secureRoute, images.create); //sr
 
 router.route('/images/:id')
   .get(images.show)
@@ -24,18 +24,17 @@ router.route('/images/:id')
 
 // IMAGE COMMENTS
 router.route('/images/:id/comments')
-  .post(images.commentsCreate); //sr
+  .post(secureRoute, images.commentsCreate); //sr
 
 router.route('/images/:id/comments/:commentId')
   .delete(images.commentsDelete); //sr
 
-// LIKES
+// LIKING AND UNLIKING
 router.route('/images/:id/likes')
   .post(secureRoute, images.likesCreate) //sr
   .delete(secureRoute, images.likesDelete); //sr
 
-
-// PROFILES
+// USERS - PROFILES
 router.route('/users')
   .get(users.index);
 
@@ -43,11 +42,14 @@ router.route('/users/:id')
   .get(users.show)
   .put(users.update); //sR?
 
-
+// USERS LIKES
+// router.route('/users/:id/likes')
+//   .get(users.likes)
+//
 
 // To add - Show route for users, dislikes, follows/following
 
 router.route('/*')
   .all((req, res) => res.status(404).json({ message: 'Not found' }));
 
-  module.exports = router;
+module.exports = router;

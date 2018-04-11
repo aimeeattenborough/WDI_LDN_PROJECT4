@@ -14,6 +14,11 @@ class Navbar extends React.Component {
     currentUser: ''
   }
 
+  componentDidMount() {
+    const user = User.getUser();
+    this.setState({ currentUser: user}, () => console.log('currentuse', this.state.currentUser));
+  }
+
   handleLogout = () => {
     Auth.logout();
     User.clearUser();
@@ -27,11 +32,6 @@ class Navbar extends React.Component {
   // if state or props changes, react re-renders. So this fires everytime the navbar receives new props, which will change when props or state changes, so cus we've moved page, the url changes, so browser router sends new props, so we can get the component will update to listen for the prop change to close the navbar.
   componentWillUpdate() {
     this.state.navIsOpen && this.setState({ navIsOpen: false });
-  }
-
-  getCurrentUser = () => {
-    const user = User.getUser();
-    this.setState({ currentUser: user}, () => console.log('currentuse', this.state.currentUser));
   }
 
   render() {
@@ -54,11 +54,10 @@ class Navbar extends React.Component {
           className={`navbar-menu ${this.state.navIsOpen ? 'is-active' : ''}`}>
           <div className="navbar-end">
             <Link className="navbar-item" to="/images"><i className="fas fa-camera-retro"></i></Link>
-            {/* <Link className="navbar-item" to=``/users/${this.state.currentUser.id}><i className="fas fa-child" onClick={this.getCurrentUser}></i></Link> */}
+            <Link className="navbar-item" to={`/users/${this.state.currentUser._id}`}><i className="fas fa-child"></i></Link>
             <Link className="navbar-item" to="/tv"><i className="fas fa-tv"></i></Link>
 
             {Auth.isAuthenticated() && <Link className="navbar-item" to="/images/new"><i className="fas fa-plus"></i></Link>}
-            {Auth.isAuthenticated() && <Link className="navbar-item" to="/images/liked"><i className="far fa-heart"></i></Link>}
             {Auth.isAuthenticated() && <a className="navbar-item" onClick={this.handleLogout}><i className="fas fa-sign-out-alt"></i></a>}
             {!Auth.isAuthenticated() && <Link className="navbar-item" to="/login">Login</Link>}
             {!Auth.isAuthenticated() && <Link className="navbar-item" to="/register">Register</Link>}

@@ -42,7 +42,10 @@ function deleteRoute(req, res, next) {
 // COMMENTS
 
 function commentsCreateRoute(req, res, next) {
-  Image.findById(req.params.id) //gets the image
+  req.body.user = req.currentUser;
+  Image
+    .findById(req.params.id)
+    .populate('user')
     .then(image => {
       image.comments.push(req.body);
       return image.save();

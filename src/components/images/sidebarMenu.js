@@ -22,32 +22,35 @@ class sidebarMenu extends React.Component {
     this.setState({ currentUser: user }, () => console.log('current yooo', this.state.currentUser));
     // get unfluencers
     axios.get('/api/users')
-    .then(res => this.setState({ allUsers: res.data }, () => (console.log('all users', this.state.allUsers))));
+      .then(res => this.setState({ allUsers: res.data }, () => (console.log('all users', this.state.allUsers))));
   }
 
 
   render() {
     return (
       this.state.currentUser && (
-        <aside className="aside column is-sidebar-menu is-fullheight section is-hidden-mobile">
+        <aside className="column is-one-quarter-desktop">
           <ul>
             <li>
               <div className="card">
                 <div className="card-content">
-                  <h1>{this.state.currentUser.username}</h1>
-                  <img className="profile-pic" src={this.state.currentUser.profilePicture} />
+                  <h1>{this.state.currentUser.username}</h1><img className="profile-pic" src={this.state.currentUser.profilePicture} />
                 </div>
                 <div className="card-content">
-                  {/* <h1>{this.state.currentUser.username}</h1>
-                  <img className="profile-pic" src={this.state.currentUser.profilePicture} /> */}
-                  {this.state.allUsers.map((user, i) =>  user.isUnfluencer && <p key={i}>{user.username}</p> )}
+                  {this.state.allUsers.map((user, i) =>
+                    user.isUnfluencer &&
+                    <div>
+                      <p key={i}>{user.username}</p>
+                      <img src={user.profilePicture} className="profile-pic" />
+                    </div>
+                  )}
                 </div>
               </div>
             </li>
           </ul>
         </aside>
       )
-    )
+    );
   }
 }
 

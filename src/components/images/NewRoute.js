@@ -20,11 +20,11 @@ class NewRoute extends React.Component {
   handleChange = ({ target: { name, value } }) => {
     const user = User.getUser();
     // destructuring e.target.name
-  const errors = Object.assign({}, this.state.errors, { [name]: '' });
-  // clearing the errors
-  this.setState({ [name]: value, errors, user: user }, () => console.log('this.state in handelchange', this.state));
-  // name in [] makes it a variable. Otherwise it would look for 'name' in state.
-}
+    const errors = Object.assign({}, this.state.errors, { [name]: '' });
+    // clearing the errors
+    this.setState({ [name]: value, errors, user: user }, () => console.log('this.state in handelchange', this.state));
+    // name in [] makes it a variable. Otherwise it would look for 'name' in state.
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -58,9 +58,9 @@ class NewRoute extends React.Component {
           />
         </div>
         {this.state.image && <img src={this.state.image} />}
-      <button className="button is-primary">Submit</button>
+        <button className="button is-primary">Submit</button>
       </form>
-    )
+    );
   }
 }
 
