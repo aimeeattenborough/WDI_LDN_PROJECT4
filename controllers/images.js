@@ -13,6 +13,7 @@ function indexRoute(req, res, next) {
 }
 
 function createRoute(req, res, next) {
+  req.body.user = req.currentUser;
   return Image.create(req.body)
     .then(image => res.status(201).json(image))
     .catch(next);
@@ -49,6 +50,7 @@ function commentsCreateRoute(req, res, next) {
       image.comments.push(req.body);
       return image.save();
     })
+    .then(image => Image.populate(image, { path: 'comments.user' }))
     .then(image => res.json(image))
     .catch(next);
 }

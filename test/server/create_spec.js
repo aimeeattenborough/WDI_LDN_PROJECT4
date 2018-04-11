@@ -1,29 +1,36 @@
 /* global api, describe, it, expect, beforeEach */
 
-const Image = require('../../../models/image');
-const User = require('../../../models/user');
+const Image = require('../../models/image');
+const User = require('../../models/user');
 const jwt = require('jsonwebtoken');
-const { secret } = require('../../../config/environment');
+const { secret } = require('../../config/environment');
 
 const imageData = {
   image: 'image',
-  caption: 'caption',
-  user: {},
-  comments: []
+  caption: 'caption'
 };
 
-const userData = { username: 'test', email: 'test@test.com', password: 'test', passwordConfirmation: 'test' };
+const userData = {
+  username: 'user1',
+  email: 'user1@user1.com',
+  password: 'password',
+  passwordConfirmation: 'password',
+  profilePicture: 'https://www.gamedevmarket.net/inc/uploads/Chicken_sombrero.gif',
+  isUnfluencer: false
+};
 let token;
+let user;
 
 describe('POST /images', () => {
   beforeEach(done => {
-    Promise.all([
+    Promise.props([
       User.remove({}),
       Image.remove({})
     ])
       .then(() => User.create(userData))
-      .then(user => {
-        token = jwt.sign({ sub: user._id }, secret, { expiresIn: '6h' }, () => console.log('token', token));
+      .then(_user => {
+        user = _user;
+        token = jwt.sign({ sub: user._id }, secret, { expiresIn: '6h' });
       })
       .then(done);
   });
@@ -39,8 +46,7 @@ describe('POST /images', () => {
     api
       .post('/api/images')
       .set('Authorization', `Bearer ${token}`)
-      .send(imageData);
-    console.log('imagedata', imageData)
+      .send(imageData)
       .expect(201, done);
   });
 
@@ -50,7 +56,6 @@ describe('POST /images', () => {
       .set('Authorization', `Bearer ${token}`)
       .send(imageData)
       .end((err, res) => {
-        console.log('resbod', res.body);
         expect(res.body).to.be.an('object');
         expect(res.body).to.include.keys([
           'image',
@@ -66,10 +71,11 @@ describe('POST /images', () => {
     api
       .post('/api/images')
       .set('Authorization', `Bearer ${token}`)
-      .send(imageData[0])
+      .send(imageData)
       .end((err, res) => {
-        expect(res.body.image).to.eq(imageData[0].image);
-        expect(res.body.caption).to.eq(imageData[0].caption);
+        console.log(res.body);
+        expect(res.body.image).to.eq(imageData.image);
+        expect(res.body.caption).to.eq(imageData.caption);
         done();
       });
   });

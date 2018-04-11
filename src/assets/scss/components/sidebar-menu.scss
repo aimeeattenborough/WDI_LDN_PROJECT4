@@ -2,13 +2,16 @@ aside {
   width: 200px;
 }
 .is-sidebar-menu {
-  min-height: calc(100vh - .75rem );
-  max-height: calc(100vh - .75rem );
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: stretch;
   width: 200px;
   margin: 0;
+  position: fixed;
+  overflow-x: hidden;
+
+  z-index: 1;
   .card {
     width: 200px;
   .card-image {
@@ -20,6 +23,19 @@ aside {
   }
 }
 
+
+// .sidenav {
+//     height: 100%;
+//     width: 160px;
+//     position: fixed;
+//     z-index: 1;
+//     top: 0;
+//     left: 0;
+//     background-color: #111;
+//     overflow-x: hidden;
+//     padding-top: 20px;
+// }
+//
 
 .column {
   overflow-y: auto;

@@ -29,7 +29,7 @@ class sidebarMenu extends React.Component {
   render() {
     return (
       this.state.currentUser && (
-        <aside className="column is-one-quarter-desktop">
+        <aside className="column is-one-quarter-desktop is-hidden-mobile">
           <ul>
             <li>
               <div className="">
