@@ -5,7 +5,7 @@ const Image = require('../models/image');
 function indexRoute(req, res, next) {
   Image
     .find()
-    .populate('user')
+    .populate('user comments.user')
     .then(images => {
       res.json(images);
     })
@@ -45,7 +45,6 @@ function commentsCreateRoute(req, res, next) {
   req.body.user = req.currentUser;
   Image
     .findById(req.params.id)
-    .populate('user')
     .then(image => {
       image.comments.push(req.body);
       return image.save();

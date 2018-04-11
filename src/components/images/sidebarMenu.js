@@ -32,16 +32,20 @@ class sidebarMenu extends React.Component {
         <aside className="column is-one-quarter-desktop">
           <ul>
             <li>
-              <div className="card">
-                <div className="card-content">
+              <div className="">
+                <Link to={`/users/${this.state.currentUser._id}`}>
                   <h1>{this.state.currentUser.username}</h1><img className="profile-pic" src={this.state.currentUser.profilePicture} />
-                </div>
+                  <hr />
+                </Link>
+                <h1>Top Unfluencers:</h1>
                 <div className="card-content">
                   {this.state.allUsers.map((user, i) =>
                     user.isUnfluencer &&
-                    <div>
-                      <p key={i}>{user.username}</p>
-                      <img src={user.profilePicture} className="profile-pic" />
+                    <div key={i}>
+                      <Link to={`/users/${user._id}`}>
+                        <p>{user.username}</p>
+                        <img src={user.profilePicture} className="profile-pic" />
+                      </Link>
                     </div>
                   )}
                 </div>

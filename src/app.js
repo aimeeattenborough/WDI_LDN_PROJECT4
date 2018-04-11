@@ -17,7 +17,6 @@ import EditRoute from './components/images/EditRoute';
 import TelV from './components/images/TelV';
 
 import ProfileRoute from './components/users/ProfileRoute';
-import LikedRoute from './components/users/LikedRoute';
 
 import Auth from './lib/Auth';
 import User from './lib/User';

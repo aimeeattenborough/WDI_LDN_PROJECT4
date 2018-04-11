@@ -28,7 +28,6 @@ class IndexRoute extends React.Component {
   }
 
   likeImage = (post) => {
-    const user = User.getUser();
     const index = this.state.posts.indexOf(post);
     // finding index of current post clicked on
     const posts = this.state.posts.slice();
@@ -44,7 +43,6 @@ class IndexRoute extends React.Component {
   }
 
   unlikeImage = (post) => {
-    const user = User.getUser();
     const index = this.state.posts.indexOf(post);
     const posts = this.state.posts.slice();
     // making copy of array
@@ -107,7 +105,7 @@ class IndexRoute extends React.Component {
                 </Link>
                 <div className="card">
                   <div className="card-content">
-                    {user.likes.includes(post._id) ? (
+                    {user && user.likes.includes(post._id) ? (
                       <button value="button" className="icon" onClick={() => this.unlikeImage(post)}>
                         <img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/heart-icon.png" />
                       </button>

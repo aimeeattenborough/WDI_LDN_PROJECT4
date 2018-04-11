@@ -4,6 +4,9 @@ import Auth from '../../lib/Auth';
 import User from '../../lib/User';
 import Filestack from '../images/Filestack';
 
+import scrollTo from 'scroll-to';
+
+
 import css from '../../assets/scss/components/registration-form.scss';
 
 
@@ -19,31 +22,40 @@ class Register extends React.Component {
   // prevent default behaviour
   // make a post request to /api/register
   // send the form data
-  e.preventDefault();
-  axios.post('/api/register', this.state) // this.state is the form data, we are storing the form data in state
-    // the response has the user, token and message. We need to put it in local storage.
-    .then(res => {
-      Auth.setToken(res.data.token);
-      User.setUser(res.data.user);
-    })
-    .then(() => this.props.history.push('/images'));
-}
+    e.preventDefault();
+    axios.post('/api/register', this.state) // this.state is the form data, we are storing the form data in state
+      // the response has the user, token and message. We need to put it in local storage.
+      .then(res => {
+        Auth.setToken(res.data.token);
+        User.setUser(res.data.user);
+      })
+      .then(() => this.props.history.push('/images'));
+  }
   onSuccess = (result) => {
     console.log('result', result);
     const results = Object.assign({}, this.state, { profilePicture: result.filesUploaded[0].url});
     console.log('results', results);
     this.setState({ profilePicture: results.profilePicture }, () => console.log(this.state));
-}
+  }
 
   loginPageRedirect = () => {
     this.props.history.push('/login');
   }
 
-    render() {
-      return (
-// REGISTER
-      <div className="registration-form">
-        <form onSubmit={this.handleSubmitRegister}>
+  scrollRegistrationForm = () => {
+    scrollTo(500, 1200, {
+      ease: 'out-bounce',
+      duration: 1500
+    });
+  }
+
+  render() {
+    return (
+    // REGISTER
+      <main>
+        <button className="button" id="sign-up" onClick={this.scrollRegistrationForm}>Join Now</button>
+        <div className="registration-form">
+          <form onSubmit={this.handleSubmitRegister}>
             <div className="field">
               <label htmlFor="username">Username</label>
               <input className="input"
@@ -83,10 +95,15 @@ class Register extends React.Component {
             </div>
             <Filestack onSuccess={this.onSuccess} />
 
+            <div className="profile-pic">
+              <img src={this.state.profilePicture} />
+            </div>
+
             <button className="button is-primary">Submit</button>
             <p>Already have an account?<a onClick={this.loginPageRedirect}> Login here</a> </p>
           </form>
         </div>
+      </main>
     );
   }
 }

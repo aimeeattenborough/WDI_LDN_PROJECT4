@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactFilestack from 'react-filestack'
+import ReactFilestack from 'react-filestack';
 
 class Filestack extends React.Component {
 
@@ -10,9 +10,9 @@ class Filestack extends React.Component {
   options = {
     accept: 'image/*',
     maxFiles: 1,
-      transformations: {
-        crop: {aspectRatio: 4 / 4}
-      },
+    transformations: {
+      crop: {aspectRatio: 4 / 4}
+    }
   }
 
   render() {
@@ -23,7 +23,7 @@ class Filestack extends React.Component {
         onSuccess={this.props.onSuccess}
         render={({ onPick }) => (
           <div>
-            <strong>Upload an image</strong>
+            <strong>Upload an image</strong><br />
             <button onClick={onPick}>Pick</button>
           </div>
         )}
