@@ -76,7 +76,7 @@ class ProfileRoute extends React.Component {
             <Link to={`/users/${following._id}`}>
               <div className="card" onClick={() => this.viewProfile(following._id)}>
                 <div className="card-content">
-                  <img src={following.profilePicture} />
+                  <img src={following.profilePicture} className="profile-pic"/>
                   <h4 className="subtitle">{following.username}</h4>
                 </div>
               </div>
