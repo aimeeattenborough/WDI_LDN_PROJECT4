@@ -69,12 +69,9 @@ function commentsDeleteRoute(req, res, next) {
 // LIKES
 
 function likesCreateRoute(req, res, next) {
-  console.log('hitting route');
   if(req.currentUser.likes.find(image => image.equals(req.params.id))) return false;
   // checking whether the current likes array contains the same image id - if so cannot add again. image is a string, req.params an obj so using equals
-  console.log('adding like');
   req.currentUser.likes.push(req.params.id);
-  console.log(req.currentUser);
   req.currentUser.save()
     .then(user => res.json(user))
     .catch(next);
@@ -83,6 +80,27 @@ function likesCreateRoute(req, res, next) {
 function likesDeleteRoute(req, res, next) {
   req.currentUser.likes = req.currentUser.likes.filter(image => !image.equals(req.params.id));
   // filter returns new array so saving it as likes.
+  req.currentUser.save()
+    .then(user => res.json(user))
+    .catch(next);
+}
+// DISLIKES
+
+function dislikesCreateRoute(req, res, next) {
+  console.log('hitting route');
+  if(req.currentUser.dislikes.find(image => image.equals(req.params.id))) return false;
+  // checking whether the current dislikes array contains the same image id - if so cannot add again. image is a string, req.params an obj so using equals
+  console.log('adding dislike');
+  req.currentUser.dislikes.push(req.params.id);
+  console.log(req.currentUser);
+  req.currentUser.save()
+    .then(user => res.json(user))
+    .catch(next);
+}
+
+function dislikesDeleteRoute(req, res, next) {
+  req.currentUser.dislikes = req.currentUser.dislikes.filter(image => !image.equals(req.params.id));
+  // filter returns new array so saving it as dislikes.
   req.currentUser.save()
     .then(user => res.json(user))
     .catch(next);
@@ -99,5 +117,7 @@ module.exports = {
   commentsCreate: commentsCreateRoute,
   commentsDelete: commentsDeleteRoute,
   likesCreate: likesCreateRoute,
-  likesDelete: likesDeleteRoute
+  likesDelete: likesDeleteRoute,
+  dislikesCreate: dislikesCreateRoute,
+  dislikesDelete: dislikesDeleteRoute
 };

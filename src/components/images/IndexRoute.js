@@ -26,7 +26,7 @@ class IndexRoute extends React.Component {
     axios.get('/api/images')
       .then(res => this.setState({ posts: res.data, currentUser: currentUser }));
   }
-
+  // likes
   likeImage = (post) => {
     const index = this.state.posts.indexOf(post);
     // finding index of current post clicked on
@@ -53,6 +53,35 @@ class IndexRoute extends React.Component {
       .then(res => User.setUser(res.data))
       .then(() => this.setState({ posts: posts }));
   }
+
+  // dislikes
+  dislikeImage = (post) => {
+    const index = this.state.posts.indexOf(post);
+    // finding index of current post clicked on
+    const posts = this.state.posts.slice();
+    // making a copy of posts
+    posts[index].dislike = !posts[index].dislike;
+    axios.post(`/api/images/${this.state.posts[index]._id}/dislikes`, null, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => {
+        User.setUser(res.data);
+        this.setState({ posts: posts }, () => console.log('posts', posts));
+      });
+  }
+
+  undislikeImage = (post) => {
+    const index = this.state.posts.indexOf(post);
+    const posts = this.state.posts.slice();
+    // making copy of array
+    posts[index].dislike = !posts[index].dislike;
+    axios.delete(`/api/images/${this.state.posts[index]._id}/dislikes`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => User.setUser(res.data))
+      .then(() => this.setState({ posts: posts }));
+  }
+
 
   handleChangeComment = (e) => {
     this.setState({ newComment: e.target.value }, () => console.log(this.state));
@@ -117,6 +146,19 @@ class IndexRoute extends React.Component {
                         <img src="https://png.icons8.com/metro/1600/like.png" />
                       </button>
                     )}
+
+                    {/* dislikes */}
+                    {user && user.dislikes.includes(post._id) ? (
+                      <button value="button" className="icon" onClick={() => this.undislikeImage(post)}>
+                        <img src="http://cdn.onlinewebfonts.com/svg/img_529680.png" />
+                      </button>
+                    ) : (
+                      <button value="button" className="icon" onClick={() => this.dislikeImage(post)}>
+                        <img src="https://cdn2.iconfinder.com/data/icons/social-productivity-line-art-2/128/thumbs-down-2-512.png" />
+                      </button>
+                    )}
+
+                    {/*comments */}
                     <button className="icon" onClick={() => this.toggleEditing(post)}>
                       <img src="http://icons.iconarchive.com/icons/icons8/ios7/512/Very-Basic-Speech-Bubble-icon.png" />
                     </button>

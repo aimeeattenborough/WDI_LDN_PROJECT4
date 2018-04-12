@@ -6,9 +6,9 @@ const schema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   profilePicture: { type: String },
-  // bio: { type: String },
   isUnfluencer: { type: Boolean, default: false },
   likes: [{ type: mongoose.Schema.ObjectId, ref: 'Image' }],
+  dislikes: [{ type: mongoose.Schema.ObjectId, ref: 'Image' }],
   following: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   images: [{type: mongoose.Schema.ObjectId, ref: 'Image' }]
 });
@@ -63,7 +63,7 @@ schema.methods.hasLiked = function hasLiked(image) {
   });
 };
 
-schema.set('toJSON', { virtuals: true })
+schema.set('toJSON', { virtuals: true });
 
 
 module.exports = mongoose.model('User', schema);

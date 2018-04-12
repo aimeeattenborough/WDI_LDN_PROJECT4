@@ -34,6 +34,11 @@ router.route('/images/:id/likes')
   .post(secureRoute, images.likesCreate) //sr
   .delete(secureRoute, images.likesDelete); //sr
 
+// DISLIKING
+router.route('/images/:id/dislikes')
+  .post(secureRoute, images.dislikesCreate) //sr
+  .delete(secureRoute, images.dislikesDelete);
+
 // USERS - PROFILES
 router.route('/users')
   .get(users.index);

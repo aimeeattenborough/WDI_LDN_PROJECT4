@@ -97,38 +97,22 @@ class ProfileRoute extends React.Component {
               )}
             </div>
           </div>
-          <div className="tile is-parent">
+          <div className="tile is-parent is-vertical">
             <div className="tile is-child box">
               <p className="title sub">Liked:</p>
+
               {this.state.user && this.state.user.likes.map((like, i) =>
                 <img className="liked" key={i} src={like.image} />
               )}
             </div>
+            <div className="tile is-child box">
+              <p className="title sub">Disliked:</p>
+              {this.state.user && this.state.user.dislikes.map((dislike, i) =>
+                <img className="disliked" key={i} src={dislike.image} />
+              )}
+            </div>
           </div>
         </div>
-
-
-        {/* <h1 className="title">{this.state.user.username}</h1>
-        <img src={this.state.user.profilePicture} />
-
-        <h3 className="title sub">Following:</h3>
-        {this.state.user && this.state.user.following.map((following, i) =>
-
-          <li key={i} className="column users">
-            <Link to={`/users/${following._id}`}>
-              <div className="profile-pic" onClick={() => this.viewProfile(following._id)}>
-                <img src={following.profilePicture} className="profile-pic-image"/>
-              </div>
-              <div className="username">
-                <h4>{following.username}</h4>
-              </div>
-            </Link>
-          </li>
-        )}
-        <h3 className="title sub">Likes:</h3>
-        {this.state.user && this.state.user.likes.map((like, i) =>
-          <img className="liked" key={i} src={like.image} />
-        )} */}
       </div>
     );
   }
