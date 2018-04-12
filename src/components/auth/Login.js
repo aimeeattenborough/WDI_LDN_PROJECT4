@@ -46,9 +46,10 @@ handleSubmitLogin = (e) => {
           </video>
         </div>
         <div className="login-form">
+          <h1 className="login-header">Login</h1>
           <form onSubmit={this.handleSubmitLogin}>
             <div className="field">
-              <label htmlFor="email">Email</label>
+              {/* <label htmlFor="email">Email</label> */}
               <input
                 className="input"
                 placeholder="Email"
@@ -57,7 +58,7 @@ handleSubmitLogin = (e) => {
               />
             </div>
             <div className="field">
-              <label htmlFor="password">Password</label>
+              {/* <label htmlFor="password">Password</label> */}
               <input
                 type="password"
                 className="input"
@@ -67,9 +68,9 @@ handleSubmitLogin = (e) => {
               />
             </div>
 
-            <button className="button">Submit</button>
+            <button className="button login-button">Submit</button>
 
-            <p>Don't have an account yet?</p><a onClick={this.registerPageRedirect}> Sign up here.</a>
+            <p>Don't have an account yet?</p><a onClick={this.registerPageRedirect}>Sign up here.</a>
 
           </form>
         </div>

@@ -1,9 +1,12 @@
-.login-form {
+div.login-form {
   width: 300px;
-  background-color: white;
-  border: 1px solid black;
-  margin:  50px auto;
+  color: white;
+  margin:  150px auto;
+  margin-left: 40vw;
   padding: 10px;
+  z-index: 2!important;
+  position: fixed;
+
 }
 
 .fullscreen-bg {
@@ -29,4 +32,16 @@
 video {
   width: 100vw;
   height: 100vh;
+}
+
+.login-button {
+  background-color: #B93F8B;
+  color: white;
+  border: 1px solid #B93F8B;
+}
+
+.login-header {
+  font-family: "Nunito", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
 }

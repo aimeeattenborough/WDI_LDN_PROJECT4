@@ -45,20 +45,23 @@ class NewRoute extends React.Component {
 
   render() {
     return (
-      <form className="upload-form" onSubmit={this.handleSubmit}>
-        <Filestack onSuccess={this.onSuccess} />
-        <div className="field">
-          <input
-            className="input"
-            placeholder="Caption"
-            value={this.state.caption}
-            name="caption"
-            onChange={this.handleChange}
-          />
-        </div>
-        {this.state.image && <img src={this.state.image} />}
-        <button className="button">Submit</button>
-      </form>
+      <main className="new-form">
+        <form className="upload-form" onSubmit={this.handleSubmit}>
+          <h1 className="upload-header">Upload a new image:</h1>
+          <Filestack onSuccess={this.onSuccess} />
+          <div className="field">
+            <input
+              className="input input-field"
+              placeholder="Caption"
+              value={this.state.caption}
+              name="caption"
+              onChange={this.handleChange}
+            />
+          </div>
+          {this.state.image && <img src={this.state.image} />}
+          <button className="button submit-button">Submit</button>
+        </form>
+      </main>
     );
   }
 }

@@ -1,7 +1,32 @@
 .upload-form {
   width: 300px;
-  background-color: white;
-  border: 1px solid black;
-  margin: 20vh auto;
+  // background-color: white;
+  // border: 1px solid black;
+  // margin: 0 auto;
   padding: 10px;
+  position: absolute;
+  margin-top: 75px;
+  margin-left: 40vw;
+}
+.submit-button {
+  background-color: #B93F8B;
+  color: white;
+  border: 1px solid #B93F8B;
+}
+
+.upload-header {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.input-field {
+  margin-top: 10px;
+}
+.new-form {
+  height: 100vh;
+  background-image: url('https://diaryofaquirkygirl.files.wordpress.com/2014/10/img_0355.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
