@@ -19,4 +19,11 @@ module.exports = [{
   passwordConfirmation: 'password',
   profilePicture: 'https://media.giphy.com/media/uSYQsJQWEv6O4/giphy.gif',
   isUnfluencer: true
+}, {
+  username: 'alpackin',
+  email: 'alpackin@alpackin.com',
+  password: 'password',
+  passwordConfirmation: 'password',
+  profilePicture: '../../assets/scss/images/alpaca.gif',
+  isUnfluencer: true
 }];

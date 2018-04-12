@@ -22,7 +22,7 @@ class Navbar extends React.Component {
   handleLogout = () => {
     Auth.logout();
     User.clearUser();
-    this.props.history.push('/images');
+    this.props.history.push('/login');
   }
 
   handleToggle = () => {
@@ -39,7 +39,7 @@ class Navbar extends React.Component {
       <nav className="navbar">
         <div className="navbar-brand">
           <Link className="navbar-item" to="/images">
-          Unstagram
+            <img className="logo" src="../../assets/scss/images/Unstagram_logo_white.png" />
           </Link>
           <div
             className={`navbar-burger ${this.state.navIsOpen ? 'is-active' : ''}`}

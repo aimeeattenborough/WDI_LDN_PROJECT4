@@ -42,7 +42,7 @@ class sidebarMenu extends React.Component {
                     <p className="username-p">{this.state.currentUser.username}</p>
                   </div>
 
-                  <hr />
+                  <hr className="hr" />
                 </Link>
                 <h1 className="unfluencers">Top Unfluencers:</h1>
                 <div className="card-content">

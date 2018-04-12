@@ -13,7 +13,16 @@
     font-weight: bold;
   }
 
-.box {
-    box-shadow: none;
-    border: 1px solid #E6E6E6;
-  }
+
+
+.follow-button {
+  background-color: #B93F8B;
+  color: white;
+  border: 1px solid #B93F8B;
+  margin-top: 30px;
+}
+
+.tile-box {
+  box-shadow: none;
+  border: 1px solid #E6E6E6;
+}

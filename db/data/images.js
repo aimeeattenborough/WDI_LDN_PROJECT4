@@ -7,10 +7,18 @@ module.exports = [{
   caption: 'Cat blur.'
 },
 {
-  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmVJeyWrZOaSvKBQRdoZtvR8Blyb5qT7yL-qc23XhruicxKnds',
-  caption: 'Banana.'
+  image: '../../assets/scss/images/news.png',
+  caption: 'Anti-news.'
 },
 {
-  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmVJeyWrZOaSvKBQRdoZtvR8Blyb5qT7yL-qc23XhruicxKnds',
-  caption: 'Banana.'
+  image: '../../assets/scss/images/charts.png',
+  caption: 'Reading materials.'
+},
+{
+  image: '../../assets/scss/images/micro.png',
+  caption: 'Sign of the times.'
+},
+{
+  image: '../../assets/scss/images/broom.png',
+  caption: 'Broom-ful of Asha.'
 }];

@@ -2,16 +2,19 @@
   width: 300px;
   background-color: white;
   border: 1px solid #E6E6E6;
-  margin:  800px auto 40px;
+  margin:  80px auto 40px;
   padding: 10px;
-  padding-top: 80px;
+  padding-top: 30px;
   font-family: "Nunito", sans-serif;
   font-size: 15px;
   font-weight: bold;
 }
-#sign-up {
-  margin-top: 50vh;
+.main-button {
+  margin-top: 5vh;
   margin-left: 47vw;
+  background-color: #B93F8B;
+  color: white;
+  border: 1px solid #B93F8B;
 }
 
 main {
@@ -41,4 +44,44 @@ input {
 
 .already-have-account {
   text-align: center;
+}
+
+.logo-form {
+  margin-bottom: 15px;
+  height: 70px;
+  width: auto;
+}
+.blurb {
+  text-align: center;
+  width: 50vw;
+  margin: 0 auto;
+}
+.h1-reg {
+  margin-top: 10px;
+  margin-bottom: 10px!important;
+  font-size: 25px;
+}
+
+.unsta-rev {
+  margin-top: 30px;
+  margin-bottom: 30px!important;
+  font-size: 40px;
+}
+
+
+.box {
+  border-style: none;
+  border: none!important;
+  background-color: inherit;
+}
+.testimonials {
+  margin-top: 30px;
+  background-color: grey;
+}
+.reviews {
+  color: white;
+}
+
+.review-box {
+  box-shadow: none;
 }

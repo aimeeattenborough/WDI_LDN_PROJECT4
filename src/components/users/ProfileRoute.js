@@ -67,20 +67,20 @@ class ProfileRoute extends React.Component {
         {!this.isCurrentUser() && <div>
           {this.state.currentUser && this.state.user && this.state.currentUser.following.includes(this.state.user._id) ? (
             // if it's not the current user, and there is a current user, and user, and their following includes the same user, then display unfollow
-            <button className="button" onClick={this.unfollowUser}>Unfollow</button>
+            <button className="button follow-button" onClick={this.unfollowUser}>Unfollow</button>
           ) : (
-            <button className="button" onClick={this.followUser}>Follow</button>
+            <button className="button follow-button" onClick={this.followUser}>Follow</button>
           )}
         </div>}
 
         <br />
         <div className="tile is-ancestor">
           <div className="tile is-4 is-vertical is-parent">
-            <div className="tile is-child box">
+            <div className="tile is-child box tile-box">
               <p className="title">{this.state.user.username}</p>
               <img src={this.state.user.profilePicture} />
             </div>
-            <div className="tile is-child box">
+            <div className="tile is-child box tile-box">
               <p className="title sub">Following:</p>
               {this.state.user && this.state.user.following.map((following, i) =>
 
