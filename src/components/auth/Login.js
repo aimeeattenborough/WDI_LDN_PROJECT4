@@ -27,44 +27,54 @@ handleSubmitLogin = (e) => {
     })
     // .then(() => Flash.setMessage('success', 'Welcome back!'))
     .then(() => this.props.history.push('/images'));
-  }
+}
 
   registerPageRedirect = () => {
     this.props.history.push('/register');
   }
 
-    render() {
-      return (
-// LOGIN
-      <div className="login-form">
-        <form onSubmit={this.handleSubmitLogin}>
-          <div className="field">
-            <label htmlFor="email">Email</label>
-            <input
-              className="input"
-              placeholder="Email"
-              name="email"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="field">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              className="input"
-              placeholder="Password"
-              name="password"
-              onChange={this.handleChange}
-            />
-          </div>
+  render() {
+    return (
+    // LOGIN
 
-          <button className="button is-primary">Submit</button>
+      <main>
+        {/* <!-- The video --> */}
 
-          <p>Don't have an account yet?<a onClick={this.registerPageRedirect}> Sign up here.</a> </p>
+        <div className="fullscreen-bg">
+          <video autoPlay muted loop id="myVideo" className="fullscreen-bg_video">
+            <source src="../../assets/scss/video/washingmachine.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="login-form">
+          <form onSubmit={this.handleSubmitLogin}>
+            <div className="field">
+              <label htmlFor="email">Email</label>
+              <input
+                className="input"
+                placeholder="Email"
+                name="email"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                className="input"
+                placeholder="Password"
+                name="password"
+                onChange={this.handleChange}
+              />
+            </div>
 
-        </form>
-      </div>
-    )
+            <button className="button">Submit</button>
+
+            <p>Don't have an account yet?</p><a onClick={this.registerPageRedirect}> Sign up here.</a>
+
+          </form>
+        </div>
+      </main>
+    );
   }
 }
 

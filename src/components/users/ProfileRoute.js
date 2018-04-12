@@ -4,6 +4,8 @@ import Auth from '../../lib/Auth';
 import User from '../../lib/User';
 import { Link } from 'react-router-dom';
 
+import css from '../../assets/scss/components/profile-page.scss';
+
 
 class ProfileRoute extends React.Component {
 
@@ -65,31 +67,68 @@ class ProfileRoute extends React.Component {
         {!this.isCurrentUser() && <div>
           {this.state.currentUser && this.state.user && this.state.currentUser.following.includes(this.state.user._id) ? (
             // if it's not the current user, and there is a current user, and user, and their following includes the same user, then display unfollow
-            <button onClick={this.unfollowUser}>Unfollow</button>
+            <button className="button" onClick={this.unfollowUser}>Unfollow</button>
           ) : (
-            <button onClick={this.followUser}>Follow</button>
+            <button className="button" onClick={this.followUser}>Follow</button>
           )}
         </div>}
 
-        <h1>{this.state.user.username}</h1>
+        <br />
+        <div className="tile is-ancestor">
+          <div className="tile is-4 is-vertical is-parent">
+            <div className="tile is-child box">
+              <p className="title">{this.state.user.username}</p>
+              <img src={this.state.user.profilePicture} />
+            </div>
+            <div className="tile is-child box">
+              <p className="title sub">Following:</p>
+              {this.state.user && this.state.user.following.map((following, i) =>
 
-        <h1>Following:</h1>
+                <li key={i} className="column users">
+                  <Link to={`/users/${following._id}`}>
+                    <div className="profile-pic" onClick={() => this.viewProfile(following._id)}>
+                      <img src={following.profilePicture} className="profile-pic-image"/>
+                    </div>
+                    <div className="username">
+                      <h4>{following.username}</h4>
+                    </div>
+                  </Link>
+                </li>
+              )}
+            </div>
+          </div>
+          <div className="tile is-parent">
+            <div className="tile is-child box">
+              <p className="title sub">Liked:</p>
+              {this.state.user && this.state.user.likes.map((like, i) =>
+                <img className="liked" key={i} src={like.image} />
+              )}
+            </div>
+          </div>
+        </div>
+
+
+        {/* <h1 className="title">{this.state.user.username}</h1>
+        <img src={this.state.user.profilePicture} />
+
+        <h3 className="title sub">Following:</h3>
         {this.state.user && this.state.user.following.map((following, i) =>
-          <li key={i} className="column">
+
+          <li key={i} className="column users">
             <Link to={`/users/${following._id}`}>
-              <div className="card" onClick={() => this.viewProfile(following._id)}>
-                <div className="card-content">
-                  <img src={following.profilePicture} className="profile-pic"/>
-                  <h4 className="subtitle">{following.username}</h4>
-                </div>
+              <div className="profile-pic" onClick={() => this.viewProfile(following._id)}>
+                <img src={following.profilePicture} className="profile-pic-image"/>
+              </div>
+              <div className="username">
+                <h4>{following.username}</h4>
               </div>
             </Link>
           </li>
         )}
-        <h1>Likes:</h1>
+        <h3 className="title sub">Likes:</h3>
         {this.state.user && this.state.user.likes.map((like, i) =>
           <img className="liked" key={i} src={like.image} />
-        )}
+        )} */}
       </div>
     );
   }

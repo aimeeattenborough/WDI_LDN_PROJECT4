@@ -6,13 +6,13 @@ const CommentInput = ({ post, handleChangeComment, handleSubmitComment, data }) 
       <div className="card">
         {post.comments.map(comment =>
           <article key={comment._id} className="media">
-            <figure className="media-left">
+            <figure className="media-left com-pics">
               <p className="image is-64x64">
-                <img className="profile-pic" src={comment.user.profilePicture} />
+                <img className="profile-pic-image" src={comment.user.profilePicture} />
               </p>
             </figure>
             <div className="media-content">
-              <div className="content">
+              <div className="content com-pics">
                 <p>
                   <strong>{comment.user.username}</strong>
                   <br/>

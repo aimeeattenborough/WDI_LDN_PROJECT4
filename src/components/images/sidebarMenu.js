@@ -29,22 +29,33 @@ class sidebarMenu extends React.Component {
   render() {
     return (
       this.state.currentUser && (
-        <aside className="column is-one-quarter-desktop is-hidden-mobile">
+        <aside className="column is-two-fifths-desktop is-hidden-mobile">
           <ul>
             <li>
               <div className="">
                 <Link to={`/users/${this.state.currentUser._id}`}>
-                  <h1>{this.state.currentUser.username}</h1><img className="profile-pic" src={this.state.currentUser.profilePicture} />
+
+                  <div className="profile-pic">
+                    <img src={this.state.currentUser.profilePicture} className="profile-pic-image"/>
+                  </div>
+                  <div className="username">
+                    <p className="username-p">{this.state.currentUser.username}</p>
+                  </div>
+
                   <hr />
                 </Link>
-                <h1>Top Unfluencers:</h1>
+                <h1 className="unfluencers">Top Unfluencers:</h1>
                 <div className="card-content">
                   {this.state.allUsers.map((user, i) =>
                     user.isUnfluencer &&
                     <div key={i}>
                       <Link to={`/users/${user._id}`}>
-                        <p>{user.username}</p>
-                        <img src={user.profilePicture} className="profile-pic" />
+                        <div className="profile-pic">
+                          <img src={user.profilePicture} className="profile-pic-image"/>
+                        </div>
+                        <div className="username">
+                          <p className="username-p">{user.username}</p>
+                        </div>
                       </Link>
                     </div>
                   )}

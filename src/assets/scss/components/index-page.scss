@@ -1,6 +1,7 @@
 .posts {
-  width: 70vw;
   display: inline-block;
+  margin-top: 10px;
+
 }
 
 .card-image {
@@ -15,14 +16,29 @@
 .post-image {
   height: 500px;
   box-shadow: none;
-  border: 1px solid #D1CFCE;
+  border: 1px solid #B93F8B;
 }
 
 .icon {
   background-color: white;
   border: none;
-  width: 45px;
+  width: 35px;
 }
 .icon:focus {
   outline: none;
+}
+
+.com-pics {
+  padding: 10px;
+}
+
+.caption {
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.card-content-post {
+  border: 1px solid #B93F8B;
+  padding: 10px;
 }

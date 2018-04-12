@@ -36,7 +36,7 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar is-transparent">
+      <nav className="navbar">
         <div className="navbar-brand">
           <Link className="navbar-item" to="/images">
           Unstagram

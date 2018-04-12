@@ -43,7 +43,7 @@ class Register extends React.Component {
   }
 
   scrollRegistrationForm = () => {
-    scrollTo(500, 1200, {
+    scrollTo(500, 1000, {
       ease: 'out-bounce',
       duration: 1500
     });
@@ -57,49 +57,50 @@ class Register extends React.Component {
         <div className="registration-form">
           <form onSubmit={this.handleSubmitRegister}>
             <div className="field">
-              <label htmlFor="username">Username</label>
-              <input className="input"
+              {/* <label htmlFor="username">Username</label> */}
+              <input className="input is-primary"
                 placeholder="Username"
                 name="username"
                 onChange={this.handleChange}
               />
             </div>
             <div className="field">
-              <label htmlFor="email">Email</label>
+              {/* <label htmlFor="email">Email</label> */}
               <input
-                className="input"
+                className="input is-primary"
                 placeholder="Email"
                 name="email"
                 onChange={this.handleChange}
               />
             </div>
             <div className="field">
-              <label htmlFor="password">Password</label>
+              {/* <label htmlFor="password">Password</label> */}
               <input
                 type="password"
-                className="input"
+                className="input is-primary"
                 placeholder="Password"
                 name="password"
                 onChange={this.handleChange}
               />
             </div>
             <div className="field">
-              <label htmlFor="passwordConfirmation">Password Confirmation</label>
+              {/* <label htmlFor="passwordConfirmation">Password Confirmation</label> */}
               <input
                 type="password"
-                className="input"
+                className="input is-primary"
                 placeholder="Password Confirmation"
                 name="passwordConfirmation"
                 onChange={this.handleChange}
               />
             </div>
+
             <Filestack onSuccess={this.onSuccess} />
 
             <div className="profile-pic">
               <img src={this.state.profilePicture} />
             </div>
 
-            <button className="button is-primary">Submit</button>
+            <button className="button submit">Submit</button>
             <p>Already have an account?<a onClick={this.loginPageRedirect}> Login here</a> </p>
           </form>
         </div>

@@ -93,7 +93,10 @@ class IndexRoute extends React.Component {
     console.log('this/stateposts', this.state.posts);
     return (
       <main className="columns">
-        <div className="posts column is-three-quarters-desktop is-full-mobile">
+        <div className="column is-one-fifth-desktop is-hidden-mobile">
+
+        </div>
+        <div className="posts column is-two-fifths-desktop is-full-mobile">
           <ul className="columns is-multiline">
             {this.state.posts.map(post =>
               <li key={post._id} className="column is-full-desktop">
@@ -104,7 +107,7 @@ class IndexRoute extends React.Component {
                   </div>
                 </Link>
                 <div className="card">
-                  <div className="card-content">
+                  <div className="card-content-post">
                     {user && user.likes.includes(post._id) ? (
                       <button value="button" className="icon" onClick={() => this.unlikeImage(post)}>
                         <img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/heart-icon.png" />
@@ -118,7 +121,7 @@ class IndexRoute extends React.Component {
                       <img src="http://icons.iconarchive.com/icons/icons8/ios7/512/Very-Basic-Speech-Bubble-icon.png" />
                     </button>
 
-                    <h4 className="subtitle">{post.caption}</h4>
+                    <h4 className="caption">{post.caption}</h4>
                   </div>
                 </div>
                 <CommentInput

@@ -23,8 +23,7 @@ class Filestack extends React.Component {
         onSuccess={this.props.onSuccess}
         render={({ onPick }) => (
           <div>
-            <strong>Upload an image</strong><br />
-            <button onClick={onPick}>Pick</button>
+            <button className="button add" onClick={onPick}><p className="upload">Upload an image  </p> <i className="fas fa-plus"></i></button>
           </div>
         )}
       />

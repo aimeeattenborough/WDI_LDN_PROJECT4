@@ -5,3 +5,28 @@
   margin:  50px auto;
   padding: 10px;
 }
+
+.fullscreen-bg {
+  width: 100vw;
+  height: 100vh;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+video {
+  width: 100vw;
+  height: 100vh;
+}

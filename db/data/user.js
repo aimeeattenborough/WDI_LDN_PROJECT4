@@ -1,22 +1,22 @@
 module.exports = [{
-  username: 'user1',
-  email: 'user1@user1.com',
+  username: 'paintdrying<3',
+  email: 'paintdrying@paintdrying.com',
   password: 'password',
   passwordConfirmation: 'password',
   profilePicture: 'https://www.gamedevmarket.net/inc/uploads/Chicken_sombrero.gif',
-  isUnfluencer: false
-}, {
-  username: 'user2',
-  email: 'user2@user2.com',
-  password: 'password',
-  passwordConfirmation: 'password',
-  profilePicture: 'https://5.imimg.com/data5/PU/SM/MY-13659451/poultry-farm-chicken-500x500.jpg',
   isUnfluencer: true
 }, {
-  username: 'a',
-  email: 'a',
-  password: 'a',
-  passwordConfirmation: 'a',
-  profilePicture: 'https://5.imimg.com/data5/PU/SM/MY-13659451/poultry-farm-chicken-500x500.jpg',
+  username: 'silenceisgolden',
+  email: 'silenceisgolden@silenceisgolden.com',
+  password: 'password',
+  passwordConfirmation: 'password',
+  profilePicture: 'https://media.giphy.com/media/l1J9BGJOQMbkbpWVy/giphy.gif',
+  isUnfluencer: true
+}, {
+  username: 'everythingisterrible',
+  email: 'everythingisterrible@everythingisterrible.com',
+  password: 'password',
+  passwordConfirmation: 'password',
+  profilePicture: 'https://media.giphy.com/media/uSYQsJQWEv6O4/giphy.gif',
   isUnfluencer: true
 }];

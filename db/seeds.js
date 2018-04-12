@@ -12,7 +12,7 @@ mongoose.connect(dbURI, (err, db) => {
   Image.create(imageData)
     .then(images => {
       console.log(images);
-      console.log(`${images.length} images created`)
+      console.log(`${images.length} images created`);
     })
     .catch(err => console.log(err))
     .finally(() => mongoose.connection.close());

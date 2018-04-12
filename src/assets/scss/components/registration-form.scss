@@ -1,12 +1,13 @@
 .registration-form {
   width: 300px;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #E6E6E6;
   margin:  800px auto 40px;
   padding: 10px;
+  padding-top: 80px;
 }
 #sign-up {
-  margin-top: 50vw;
+  margin-top: 50vh;
   margin-left: 50vw;
 }
 
@@ -15,4 +16,14 @@ main {
   background-color: #FAFAFA;
   font-family: 'Arimo', sans-serif;
 
+}
+
+.add {
+  border-color: white;
+
+}
+.submit {
+  margin-left: 16px;
+  border-color: white;
+  color: #B93F8B
 }

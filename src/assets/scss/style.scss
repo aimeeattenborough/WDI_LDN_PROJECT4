@@ -8,10 +8,40 @@ body {
 
 }
 .profile-pic {
-  width: 100px;
-  border-radius: 50px;
+  width: 70px;
+  border-radius: 70px;
+  display: inline-block;
 }
+
+.profile-pic-image {
+  background: linear-gradient(to right, #EE9E5A, #B93F8B);
+  border-radius: 70px;
+  padding: 3px;
+  width: 80px;
+  display: inline-block;
+}
+
+
+.username {
+  display: inline-block;
+  font-size: 18px;
+  line-height: -200px;
+}
+
 .liked {
   width: 200px;
   height: auto;
+}
+
+// h1,h2,h3,h4,h5,h6 {
+//   font-family: "Nunito", sans-serif;
+//   font-weight: 500;
+// }
+// p,a,li,blockquote {
+//   font-family: "Nunito", sans-serif;
+//   font-weight: 300;
+// }
+
+.button {
+  color: #5BCDB3;
 }

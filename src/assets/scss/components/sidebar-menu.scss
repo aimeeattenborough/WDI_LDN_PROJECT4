@@ -1,4 +1,5 @@
 aside {
+  margin-top: 10px;
   width: 200px;
 }
 .is-sidebar-menu {
@@ -23,20 +24,22 @@ aside {
   }
 }
 
+.username {
+  display: inline-block;
+  font-size: 18px;
+  line-height: -200px;
+}
 
-// .sidenav {
-//     height: 100%;
-//     width: 160px;
-//     position: fixed;
-//     z-index: 1;
-//     top: 0;
-//     left: 0;
-//     background-color: #111;
-//     overflow-x: hidden;
-//     padding-top: 20px;
-// }
-//
+.unfluencers {
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
 
 .column {
   overflow-y: auto;
+}
+.username-p {
+  padding: 20px;
+  float: right;
 }
