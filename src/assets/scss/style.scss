@@ -33,15 +33,18 @@ body {
   height: auto;
 }
 
-// h1,h2,h3,h4,h5,h6 {
-//   font-family: "Nunito", sans-serif;
-//   font-weight: 500;
-// }
-// p,a,li,blockquote {
-//   font-family: "Nunito", sans-serif;
-//   font-weight: 300;
-// }
 
 .button {
   color: #5BCDB3;
+    font-family: "Nunito", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+p {
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+a {
+  color: inherit;
 }

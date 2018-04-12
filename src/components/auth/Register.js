@@ -54,6 +54,44 @@ class Register extends React.Component {
     // REGISTER
       <main>
         <button className="button" id="sign-up" onClick={this.scrollRegistrationForm}>Join Now</button>
+
+        <div className="testimonials">
+          <h1>Testimonials:</h1>
+          <div className="tile is-ancestor">
+            <div className="tile is-parent">
+              <article className="tile is-child box">
+                <p className="title">One</p>
+                <p className="subtitle">Subtitle</p>
+              </article>
+            </div>
+            <div className="tile is-parent">
+              <article className="tile is-child box">
+                <p className="title">Two</p>
+                <p className="subtitle">Subtitle</p>
+              </article>
+            </div>
+            <div className="tile is-parent">
+              <article className="tile is-child box">
+                <p className="title">Three</p>
+                <p className="subtitle">Subtitle</p>
+              </article>
+            </div>
+            <div className="tile is-parent">
+              <article className="tile is-child box">
+                <p className="title">Four</p>
+                <p className="subtitle">Subtitle</p>
+              </article>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
+
+
         <div className="registration-form">
           <form onSubmit={this.handleSubmitRegister}>
             <div className="field">
@@ -101,7 +139,7 @@ class Register extends React.Component {
             </div>
 
             <button className="button submit">Submit</button>
-            <p>Already have an account?<a onClick={this.loginPageRedirect}> Login here</a> </p>
+            <p className="already-have-account">Already have an account?<a onClick={this.loginPageRedirect}> Login here</a> </p>
           </form>
         </div>
       </main>

@@ -1,9 +1,12 @@
 import React from 'react';
 
+import css from '../../assets/scss/components/index-page.scss';
+
+
 const CommentInput = ({ post, handleChangeComment, handleSubmitComment, data }) => {
   return (
     <div className="">
-      <div className="card">
+      <div className="card com-post">
         {post.comments.map(comment =>
           <article key={comment._id} className="media">
             <figure className="media-left com-pics">

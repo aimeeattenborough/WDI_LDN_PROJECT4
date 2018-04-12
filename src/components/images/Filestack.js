@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactFilestack from 'react-filestack';
 
+import css from '../../assets/scss/components/filestack.scss';
+
+
 class Filestack extends React.Component {
 
   state = {
@@ -23,7 +26,7 @@ class Filestack extends React.Component {
         onSuccess={this.props.onSuccess}
         render={({ onPick }) => (
           <div>
-            <button className="button add" onClick={onPick}><p className="upload">Upload an image  </p> <i className="fas fa-plus"></i></button>
+            <button className="button add" onClick={onPick}><p className="upload">Upload an image  </p> <i className="fas fa-plus plus"></i></button>
           </div>
         )}
       />

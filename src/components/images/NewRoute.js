@@ -48,17 +48,16 @@ class NewRoute extends React.Component {
       <form className="upload-form" onSubmit={this.handleSubmit}>
         <Filestack onSuccess={this.onSuccess} />
         <div className="field">
-          <label htmlFor="caption">Caption</label>
           <input
             className="input"
-            placeholder="caption"
+            placeholder="Caption"
             value={this.state.caption}
             name="caption"
             onChange={this.handleChange}
           />
         </div>
         {this.state.image && <img src={this.state.image} />}
-        <button className="button is-primary">Submit</button>
+        <button className="button">Submit</button>
       </form>
     );
   }
