@@ -62,10 +62,10 @@ class Register extends React.Component {
           <p>Unstagram is a new social network that celebrates the exceptionally ordinary and the visually mediocre. It’s a place to share your most boring snaps and most uninspiring memories. No sunset vistas, beach bodies and humblebrags. Just the tediousness of existence.</p>
 
           <h1 className="title h1-reg">It’s hip to be square</h1>
-          <p>Upvote the dull and downvote anything that looks too interesting. Paint drying 👍 An off-cut of a beige carpet in a bin 👍 A rubbish photo of Norwich, that’s all blurry 👍 </p>
+          <p>Upvote the dull and downvote anything that looks too interesting. Paint drying 👍 An off-cut of a beige carpet in a bin 👍 A rubbish photo of Norwich that’s blurry 👍 </p>
 
           <h1 className="title h1-reg">Need some unspo?</h1>
-          <p>It’s not easy being down-right mundane, so check out our unfluencers. They’ve got millions of followers and they barely know or care. No one will be hawking your artisan green tea here. They’ll show you how to make normal look unexceptional. </p>
+          <p>It’s not easy being down-right mundane, so check out our unfluencers. They’ve got millions of followers and they barely know or care. No one will be hawking your artisan chai latte here. They’ll show you how to make normal look unexceptional. </p>
         </div>
         <button className="button main-button" onClick={this.scrollRegistrationForm}>Join Now</button>
 

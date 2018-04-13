@@ -14,10 +14,10 @@ class Navbar extends React.Component {
     currentUser: ''
   }
 
-  componentDidMount() {
-    const user = User.getUser();
-    this.setState({ currentUser: user}, () => console.log('currentuse', this.state.currentUser));
-  }
+  // componentDidMount() {
+  //   const user = User.getUser();
+  //   this.setState({ currentUser: user}, () => console.log('currentuserr hello', this.state.currentUser._id));
+  // }
 
   handleLogout = () => {
     Auth.logout();
@@ -54,7 +54,7 @@ class Navbar extends React.Component {
           className={`navbar-menu ${this.state.navIsOpen ? 'is-active' : ''}`}>
           <div className="navbar-end">
             <Link className="navbar-item" to="/images"><i className="fas fa-camera-retro"></i></Link>
-            <Link className="navbar-item" to={`/users/${this.state.currentUser._id}`}><i className="fas fa-child"></i></Link>
+            <Link className="navbar-item" to={`/users/${User.getUser()._id}`}><i className="fas fa-child"></i></Link>
             <Link className="navbar-item" to="/tv"><i className="fas fa-tv"></i></Link>
 
             {Auth.isAuthenticated() && <Link className="navbar-item" to="/images/new"><i className="fas fa-plus"></i></Link>}
