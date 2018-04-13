@@ -5,7 +5,7 @@ import ReactFilestack from 'react-filestack'
 import 'bulma';
 import './assets/scss/style.scss';
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import Navbar from './components/common/Navbar';
 import Register from './components/auth/Register';
@@ -40,6 +40,7 @@ class App extends React.Component {
               <Route path="/tv" component={TelV} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
+              <Route path="/" render={() => <Redirect to="/register" />} />
             </Switch>
           </section>
         </main>
