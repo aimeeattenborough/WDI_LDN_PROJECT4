@@ -70,7 +70,7 @@ handleSubmitLogin = (e) => {
 
             <button className="button login-button">Submit</button>
 
-            <p>Don't have an account yet?</p><a onClick={this.registerPageRedirect}>Sign up here.</a>
+            <p>Don&apos;t have an account yet?</p><a onClick={this.registerPageRedirect}>Sign up here.</a>
 
           </form>
         </div>
