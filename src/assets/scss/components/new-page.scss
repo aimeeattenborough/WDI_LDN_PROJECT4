@@ -1,12 +1,10 @@
 .upload-form {
   width: 300px;
-  // background-color: white;
-  // border: 1px solid black;
-  // margin: 0 auto;
   padding: 10px;
-  position: absolute;
-  margin-top: 75px;
-  margin-left: 40vw;
+  // position: absolute;
+  //
+  display: block;
+  margin: 0 auto;
 }
 .submit-button {
   background-color: #B93F8B;
@@ -28,5 +26,6 @@
   background-image: url('https://diaryofaquirkygirl.files.wordpress.com/2014/10/img_0355.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 5vh;
 
 }
