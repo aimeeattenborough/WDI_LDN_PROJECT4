@@ -51,7 +51,6 @@ handleSubmitLogin = (e) => {
           <h1 className="login-header">Login</h1>
           <form onSubmit={this.handleSubmitLogin}>
             <div className="field">
-              {/* <label htmlFor="email">Email</label> */}
               <input
                 className="input"
                 placeholder="Email"
@@ -60,7 +59,6 @@ handleSubmitLogin = (e) => {
               />
             </div>
             <div className="field">
-              {/* <label htmlFor="password">Password</label> */}
               <input
                 type="password"
                 className="input"
