@@ -3,7 +3,7 @@ module.exports = [{
   email: 'paintdrying@paintdrying.com',
   password: 'password',
   passwordConfirmation: 'password',
-  profilePicture: 'https://www.gamedevmarket.net/inc/uploads/Chicken_sombrero.gif',
+  profilePicture: 'https://media.giphy.com/media/l0HlzRofijgQQGX8Q/giphy.gif',
   isUnfluencer: true
 }, {
   username: 'silenceisgolden',
@@ -13,8 +13,8 @@ module.exports = [{
   profilePicture: 'https://media.giphy.com/media/l1J9BGJOQMbkbpWVy/giphy.gif',
   isUnfluencer: true
 }, {
-  username: 'everythingisterrible',
-  email: 'everythingisterrible@everythingisterrible.com',
+  username: 'zzz',
+  email: 'zzz@zzz.com',
   password: 'password',
   passwordConfirmation: 'password',
   profilePicture: 'https://media.giphy.com/media/uSYQsJQWEv6O4/giphy.gif',

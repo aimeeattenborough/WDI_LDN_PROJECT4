@@ -20,11 +20,11 @@ class EditRoute extends React.Component {
 
   handleChange = ({ target: { name, value } }) => {
     // destructuring e.target.name
-  const errors = Object.assign({}, this.state.errors, { [name]: '' });
-  // clearing the errors
-  this.setState({ [name]: value, errors }, () => console.log(this.state));
-  // name in [] makes it a variable. Otherwise it would look for 'name' in state.
-}
+    const errors = Object.assign({}, this.state.errors, { [name]: '' });
+    // clearing the errors
+    this.setState({ [name]: value, errors }, () => console.log(this.state));
+    // name in [] makes it a variable. Otherwise it would look for 'name' in state.
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -57,10 +57,10 @@ class EditRoute extends React.Component {
           />
         </div>
         {this.state.image && <img src={this.state.image} />}
-      <button className="button is-primary">Submit</button>
+        <button className="button is-primary">Submit</button>
       </form>
 
-    )
+    );
   }
 }
 
