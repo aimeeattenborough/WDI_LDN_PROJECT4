@@ -41,7 +41,7 @@ handleSubmitLogin = (e) => {
         {/* <!-- The video --> */}
 
         <div className="fullscreen-bg">
-          <video autoPlay muted loop id="myVideo" className="fullscreen-bg_video">
+          <video autoPlay muted loop id="myVideo" controls="true" className="fullscreen-bg_video">
             <source src="../../assets/scss/video/washingmachine.mp4" type="video/mp4" />
           </video>
         </div>
