@@ -125,7 +125,7 @@ class IndexRoute extends React.Component {
         <div className="column is-one-fifth-desktop is-one-fifth-tablet is-hidden-mobile">
 
         </div>
-        <div className="posts column is-two-fifths-desktop is-three-fifths-tablet is-full-mobile">
+        <div className="posts column is-two-fifths-desktop is-two-fifths-tablet is-full-mobile">
           <ul className="columns is-multiline">
             {this.state.posts.map(post =>
               <li key={post._id} className="column is-full-desktop is-full-tablet">

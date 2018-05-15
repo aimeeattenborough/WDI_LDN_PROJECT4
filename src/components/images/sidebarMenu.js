@@ -29,7 +29,7 @@ class Sidebar extends React.Component {
   render() {
     return (
       this.state.currentUser && (
-        <aside className="column is-two-fifths-desktop is-one-fifth-tablet is-hidden-mobile">
+        <aside className="column is-two-fifths-desktop is-two-fifths-tablet is-hidden-mobile">
           <ul>
             <li>
               <div className="">
