@@ -37,10 +37,10 @@ handleSubmitLogin = (e) => {
     return (
     // LOGIN
 
-      <main className="fullscreen-bg">
+      <main className="fullscreen-bg-main">
         {/* <!-- The video --> */}
 
-        <div className="fullscreen-bg">
+        <div className="fullscreen-bg vid-bg">
           <video autoPlay muted loop id="myVideo" controls="true" className="fullscreen-bg_video">
             <source src="../../assets/scss/video/washingmachine.mp4" type="video/mp4" />
           </video>
