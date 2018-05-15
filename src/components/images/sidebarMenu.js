@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import css from '../../assets/scss/components/sidebar-menu.scss';
 
 
-class sidebarMenu extends React.Component {
+class Sidebar extends React.Component {
 
   state = {
     currentUser: null,
@@ -29,7 +29,7 @@ class sidebarMenu extends React.Component {
   render() {
     return (
       this.state.currentUser && (
-        <aside className="column is-two-fifths-desktop is-hidden-mobile">
+        <aside className="column is-two-fifths-desktop is-one-fifth-tablet is-hidden-mobile">
           <ul>
             <li>
               <div className="">
@@ -69,4 +69,4 @@ class sidebarMenu extends React.Component {
   }
 }
 
-export default sidebarMenu;
+export default Sidebar;

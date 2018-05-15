@@ -122,13 +122,13 @@ class IndexRoute extends React.Component {
     console.log('this/stateposts', this.state.posts);
     return (
       <main className="columns">
-        <div className="column is-one-fifth-desktop is-hidden-mobile">
+        <div className="column is-one-fifth-desktop is-one-fifth-tablet is-hidden-mobile">
 
         </div>
-        <div className="posts column is-two-fifths-desktop is-full-mobile">
+        <div className="posts column is-two-fifths-desktop is-three-fifths-tablet is-full-mobile">
           <ul className="columns is-multiline">
             {this.state.posts.map(post =>
-              <li key={post._id} className="column is-full-desktop">
+              <li key={post._id} className="column is-full-desktop is-full-tablet">
                 <Link to={`/images/${post._id}`}>
                   <div className="card post-image">
                     <div className="card-image" style={{backgroundImage: `url(${post.image})`}}>
