@@ -11,7 +11,7 @@ For my application I wanted to create a version of Instagram, but with a differe
 
 ### Features
 
-Users are directed to a registration page on on page load which shows a blurb and 'reviews' of the site. Upon registering, users are directed to an uninspiring feed of pictures where they can like the dullest photos, downvote those that they judge are too mildly interesting, and comment on them. Users can view profile pages, to follow other users, and view their likes and dislikes.
+Users are directed to a registration page which contains a blurb and testimonials of the site. Upon registering, users are directed to an uninspiring feed of pictures where they can like the dullest photos, downvote those that they judge are too mildly interesting, and comment on them. Users can view profile pages, to follow other users, and view their likes and dislikes.
 
 Registration Page
 <p align="center"><img src="https://i.imgur.com/7bySGtS.png" width="700"></p>
